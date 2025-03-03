@@ -1,5 +1,5 @@
 import React from 'react';
-import sitelogo from '../images/site-logo.png';
+import sitelogo from '../images/dummies-icon.png';
 import notification from '../images/Notifications.png';
 import userprofile from '../images/user-profile.png';
 import MenuCloseIcon from './MenuCloseIcon';
