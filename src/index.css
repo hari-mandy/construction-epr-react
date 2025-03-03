@@ -515,7 +515,7 @@ header {
         width: 100%;
         left: 0;
         position: absolute;
-		z-index: 99;
+		    z-index: 99;
         top: 65px;
         border-top: 1px solid var(--table-border);
         border-bottom: 1px solid var(--table-border);
@@ -529,6 +529,7 @@ header {
 	.full-width-search-bar button svg {
 		width: 20px;
 		height: 20px;
+    top: -10px;
 	}
     .full-width-search-bar input {
         border-radius: 8px;

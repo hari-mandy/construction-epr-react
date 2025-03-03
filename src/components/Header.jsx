@@ -8,6 +8,10 @@ import DesktopSearchIcon from './DesktopSearchIcon';
 import MobileSearchIcon from './MobileSearchIcon';
 
 const Header = () => {
+    const openSearchBar = () => {
+        document.querySelector('.mobile-search').classList.toggle('open');
+    }
+    
   return (
     <header>
         <div className="site-logo">
@@ -23,21 +27,18 @@ const Header = () => {
                     <button className="search-icon">
                         <DesktopSearchIcon />
                     </button>
-                    <input type="search" className="input-search" placeholder="Search"></input>
+                    <input type="search" className="input-search" placeholder="Search..."></input>
                 </div>
                 <div className="mobile-search">
-                    <button className="open-search">
+                    <button className="open-search" onClick={openSearchBar}>
                         <MobileSearchIcon />
                         <MenuCloseIcon />
                     </button>
                     <div className="full-width-search-bar">
                         <button className="search-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M9.99902 17.0007C13.865 17.0007 16.999 13.8667 16.999 10.0007C16.999 6.13468 13.865 3.00067 9.99902 3.00067C6.13303 3.00067 2.99902 6.13468 2.99902 10.0007C2.99902 13.8667 6.13303 17.0007 9.99902 17.0007Z" stroke="http://localhost:3000/64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M14.999 15.0007L20.999 21.0007" stroke="http://localhost:3000/64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <MobileSearchIcon />
                         </button>
-                        <input type="search" className="input-search" placeholder="Search"></input>
+                        <input type="search" className="input-search" placeholder="Search..."></input>
                     </div>
                 </div>
             </div>
