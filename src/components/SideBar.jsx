@@ -94,6 +94,13 @@ const SideBar = () => {
     }
 
     const sideMenuArray = Object.entries(sideMenus);
+
+    const removeSidebar = () => {
+        document.querySelector('.side-menu-bar').classList.remove('collapse-side-menu');
+        document.querySelector('.main-content').classList.remove('expand-main-content');
+        document.querySelector('.hamburg-sidemenu').classList.remove('open-menu');
+        document.querySelector('body').classList.remove('scroll-lock');
+    }
     
 	return (
         <section className="side-menu-bar">
@@ -122,7 +129,7 @@ const SideBar = () => {
                     </li>
                 ))}
             </ul>
-            <a href="#" className="mobile-side-menubar-adjuster"></a>
+            <a href="#" className="mobile-side-menubar-adjuster" onClick={removeSidebar}></a>
         </section>
     )
 }
