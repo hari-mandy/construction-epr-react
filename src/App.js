@@ -1,9 +1,13 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PartyMaster from './pages/Partymaster';
+import { useEffect } from 'react';
 // import Login from './pages/login';
 
 function App() {
+  useEffect(() => {
+    document.title = 'Construction ERP';
+  }, []);
   return (
     <BrowserRouter>
       <Routes>
