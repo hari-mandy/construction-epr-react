@@ -546,10 +546,10 @@ header {
         height: 32px;
         background-color: var(--primary-color);
     }
-	.page-tab-list .page-tab-list-item.active-tab::after{
+	.page-tab-list .page-tab-list-item.react-tabs__tab--selected::after{
 		position: relative;
 	}
-	.page-tab-list .page-tab-list-item.active-tab::after {
+	.page-tab-list .page-tab-list-item.react-tabs__tab--selected::after {
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -832,54 +832,55 @@ header {
 	background-color: var(--scrollbar-color);
 }
 .page-tab-list {
-    display: flex;
+    display: inline-flex;
     background-color: var(--primary-color);
     padding: var(--space-small) 0;
     border-top-left-radius: 8px;
     row-gap: var(--space-xlarge);
     border-top-right-radius: 8px;
-    min-width: 1500px;
 }
 .page-tab-list li:not(:last-child){
     border-right: 1px solid var(--star-dust);
+    outline: 0;
 }
-.page-tab-list li a {
+.page-tab-list li .tab-title {
     padding: 17.55px var(--space-small);
     position: relative;
     color: var(--river-bed);
     line-height: calc(21/14);
     transition: 0.2s all ease-in-out;/* to discusses */
+    cursor: pointer;
 }
-.page-tab-list li a:hover {
+.page-tab-list li .tab-title:hover {
     color: var(--button-hover);
 }
-.page-tab-list-item.active-tab {
+.page-tab-list-item.react-tabs__tab--selected {
     border-right: none !important;
 }
-.page-tab-list-item.active-tab a {
+.page-tab-list-item.react-tabs__tab--selected .tab-title {
     background-color: var(--button-bg);
     color: var(--primary-color);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
-.page-tab-list-item.active-tab a:hover {
+.page-tab-list-item.react-tabs__tab--selected .tab-title:hover {
     color: var(--primary-color);
 }
-.page-tab-list-item.active-tab a .tab-adjuster::after,
-.page-tab-list-item.active-tab a .tab-adjuster::before{
+.page-tab-list-item.react-tabs__tab--selected .tab-title .tab-adjuster::after,
+.page-tab-list-item.react-tabs__tab--selected .tab-title .tab-adjuster::before{
     position: absolute;
     height: 22.5px;
     width: 1px;
     background-color: var(--primary-color);
     content: '';
 }
-.page-tab-list-item.active-tab a .tab-adjuster::before {
+.page-tab-list-item.react-tabs__tab--selected .tab-title .tab-adjuster::before {
     left: -1px;
 }
-.page-tab-list-item.active-tab a .tab-adjuster::after {
+.page-tab-list-item.react-tabs__tab--selected .tab-title .tab-adjuster::after {
     right: -1px;
 }
-.page-tab-list-item.active-tab a::after{
+.page-tab-list-item.react-tabs__tab--selected .tab-title::after{
     position: absolute;
     bottom: 0;
     right: -15px;
@@ -888,7 +889,7 @@ header {
     background-image: url('../src/images/tab-after.svg');
     content: '';
 }
-.page-tab-list-item.active-tab a::before{
+.page-tab-list-item.react-tabs__tab--selected .tab-title::before{
     position: absolute;
     bottom: 0;
     left: -15px;
@@ -896,6 +897,12 @@ header {
     height: 15px;
     background-image: url('../src/images/tab-before.svg');
     content: '';
+}
+.page-tab-list li {
+    outline: none;
+}
+.page-tab-container:last-child {
+    overflow: hidden;
 }
 @media only screen and (max-width: 1024px) {
     .page-tab-container .page-tab-list li {
@@ -909,10 +916,10 @@ header {
     .tab-adjuster {
         display: none;
     }
-    .page-tab-container .page-tab-list-item.active-tab {
+    .page-tab-container .page-tab-list-item.react-tabs__tab--selected {
         display: block;
     }
-    .page-tab-list li a {
+    .page-tab-list li .tab-title {
         padding: 0;
         color: var(--table-pagination);
     }
@@ -963,7 +970,8 @@ header {
         background-image: url('../src/images/page-tab-dropdown.svg');
         content: '';
     }
-    .page-tab-list-item.active-tab{
+
+    .page-tab-list-item.react-tabs__tab--selected{
         text-align: center;
     }
     .page-tab-list-item{
@@ -981,18 +989,18 @@ header {
         display: block;
         content: '';
     }
-    .page-tab-list-item.active-tab a{
+    .page-tab-list-item.react-tabs__tab--selected a{
         padding: 0;
         background-color: transparent;
         color: var(--table-pagination);
     }
-    .page-tab-list-item.active-tab a::before{
+    .page-tab-list-item.react-tabs__tab--selected a::before{
         display: none;
     }
-    .page-tab-list-item.active-tab a::after{
+    .page-tab-list-item.react-tabs__tab--selected a::after{
         display: none;
     }
-    .page-tab-list-item.active-tab a:hover {
+    .page-tab-list-item.react-tabs__tab--selected a:hover {
         color: var(--table-pagination);
     }
 }
