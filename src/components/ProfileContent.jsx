@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 const ProfileContent = () => {
@@ -22,6 +22,25 @@ const ProfileContent = () => {
             name: "Party Master Tab One",
         }
     ];
+    const [openMenu, setOpenMenu] = useState("")
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => setScreenWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+    }, []);
+
+    const showDropDown = () => {
+        if (screenWidth <= 1024) {
+            if (openMenu == '') {
+                setOpenMenu("open-page-tab-container");
+            } else {
+                setOpenMenu("");
+            }
+        } else {
+            return
+        }
+    }
 
     
   return (
@@ -31,7 +50,7 @@ const ProfileContent = () => {
                 <h1 className="page-title">
                     My Profile
                 </h1>
-                <TabList className="page-tab-list page-tab-container">
+                <TabList className={`page-tab-list page-tab-container ${openMenu}`} onClick={showDropDown}>
                     {pagelinks.map((pageLink, index) => (
                         <Tab 
                             className="para-small page-tab-list-item" key={index}

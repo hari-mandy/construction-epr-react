@@ -919,9 +919,42 @@ header {
     .page-tab-container .page-tab-list-item.react-tabs__tab--selected {
         display: block;
     }
+    .page-tab-container .page-tab-list-item {
+        display: none;
+    }
+    .page-tab-container.page-tab-list {
+        padding: 0 7px;
+        height: 37px;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        justify-content: flex-start;
+        transition: all 0.5s ease-in-out;
+    }
+    .page-tab-list.open-page-tab-container {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+    }
+    .page-tab-list.open-page-tab-container li {
+        display: block;
+        border: none;
+        padding: 7.5px 0;
+    }
+    .open-page-tab-container.page-tab-list::after {
+        transform: rotate(180deg);
+    }
+    .page-tab-container .page-tab-list-item.react-tabs__tab--selected .tab-title{
+        background-color: transparent;
+        color: var(--table-pagination);
+    }
     .page-tab-list li .tab-title {
         padding: 0;
         color: var(--table-pagination);
+    }
+    .page-tab-list li .tab-title::after,
+    .page-tab-list li .tab-title::before {
+        display: none;
     }
     .page-tab-list li a:hover {
         color: var(--table-pagination);
@@ -930,9 +963,7 @@ header {
         position: relative;
     }
     .page-tab-list {
-        border-left: 1px solid var(--table-border);
-        border-bottom: 1px solid var(--table-border);
-        border-right: 1px solid var(--table-border);
+        border: 1px solid var(--table-border);
         display: inline-block;
         padding: 0;
         border-radius: 5px;
@@ -961,9 +992,8 @@ header {
         min-width: auto;
     }
     .page-tab-list::after {
-        position: absolute;
-        top: 7px;
-        right: 0;
+        position: relative;
+        top: 0px;
         display: block;
         width: 24px;
         height: 24px;
