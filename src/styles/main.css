@@ -838,6 +838,7 @@ header {
     border-top-left-radius: 8px;
     row-gap: var(--space-xlarge);
     border-top-right-radius: 8px;
+    min-width: 1500px;
 }
 .page-tab-list li:not(:last-child){
     border-right: 1px solid var(--star-dust);
@@ -900,9 +901,6 @@ header {
 }
 .page-tab-list li {
     outline: none;
-}
-.page-tab-container:last-child {
-    overflow: hidden;
 }
 @media only screen and (max-width: 1024px) {
     .page-tab-container .page-tab-list li {
