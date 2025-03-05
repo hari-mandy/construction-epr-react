@@ -173,7 +173,7 @@ h6 {
     display: block;
     width: 24px;
     height: 24px;
-    background-image: url('../src/images/clear-icon.svg');
+    background-image: url('../images/clear-icon.svg');
     content: '';
     transition: 0.5s all ease-in-out;
 }
@@ -198,7 +198,7 @@ h6 {
     display: block;
     width: 24px;
     height: 24px;
-    background-image: url('../src/images/add-icon.svg');
+    background-image: url('../images/add-icon.svg');
     content: '';
     transition: 0.5s all ease-in-out;
 }
@@ -219,7 +219,7 @@ h6 {
     display: block;
     width: 24px;
     height: 24px;
-    background-image: url('../src/images/next-icon.svg');
+    background-image: url('../images/next-icon.svg');
     content: '';
     transition: 0.5s all ease-in-out;
 }
@@ -228,7 +228,7 @@ h6 {
     width: 24px;
     height: 24px;
     transform: rotate(180deg);
-    background-image: url('../src/images/next-icon.svg');
+    background-image: url('../images/next-icon.svg');
     content: '';
     transition: 0.5s all ease-in-out;
 }
@@ -348,7 +348,7 @@ header {
 .dropdown-icon {
     width: 24px;
     height: 24px;
-    background-image: url(../src/images/dropdown-icon.svg);
+    background-image: url(../images/dropdown-icon.svg);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -410,7 +410,7 @@ header {
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
-    background-image: url('../src/images/user-profile-logo.svg');
+    background-image: url('../images/user-profile-logo.svg');
     content:'';
 }
 .user-integration a::before {
@@ -418,7 +418,7 @@ header {
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
-    background-image: url('../src/images/user-integration-icon.svg');
+    background-image: url('../images/user-integration-icon.svg');
     content:'';
 }
 .user-history a::before {
@@ -426,14 +426,14 @@ header {
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
-    background-image: url('../src/images/use-history-icon.svg');
+    background-image: url('../images/use-history-icon.svg');
     content:'';
 }
 .user-logout a::before {
     display: block;
     width: 24px;
     height: 24px;
-    background-image: url('../src/images/user-logout.svg');
+    background-image: url('../images/user-logout.svg');
     background-repeat: no-repeat;
     background-position: center;
     content:'';
@@ -464,7 +464,7 @@ header {
     width: 24px;
     height: 24px;
     display: inline-block;
-    background-image: url('../src/images/sub-menu-dropdown.svg');
+    background-image: url('../images/sub-menu-dropdown.svg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -644,7 +644,7 @@ header {
     display: block;
     width: 20px;
     height: 20px;
-    background-image: url(../src/images/Plus.svg);
+    background-image: url(../images/Plus.svg);
     content: '';
 }
 .depth-1 h6 > a:hover {
@@ -712,7 +712,7 @@ header {
     display: block;
     width: 24px;
     height: 24px;
-    background-image: url(../src/images/menu-dropdown.svg);
+    background-image: url(../images/menu-dropdown.svg);
     content: '';
     top: 12px;
     right: 7px;
@@ -886,7 +886,7 @@ header {
     right: -15px;
     width: 15px;
     height: 15px;
-    background-image: url('../src/images/tab-after.svg');
+    background-image: url('../images/tab-after.svg');
     content: '';
 }
 .page-tab-list-item.react-tabs__tab--selected .tab-title::before{
@@ -895,7 +895,7 @@ header {
     left: -15px;
     width: 15px;
     height: 15px;
-    background-image: url('../src/images/tab-before.svg');
+    background-image: url('../images/tab-before.svg');
     content: '';
 }
 .page-tab-list li {
@@ -997,7 +997,7 @@ header {
         display: block;
         width: 24px;
         height: 24px;
-        background-image: url('../src/images/page-tab-dropdown.svg');
+        background-image: url('../images/page-tab-dropdown.svg');
         content: '';
     }
 
@@ -1122,7 +1122,7 @@ header {
     display: block;
     width: 24px;
     height: 24px;
-    background-image: url('../src/images/dropdown-icon.svg');
+    background-image: url('../images/dropdown-icon.svg');
     background-repeat: no-repeat;
     background-position: center;
     content: '';
@@ -1133,7 +1133,7 @@ header {
     display: block;
     width: 30px;
     height: 24px;
-    background-image: url('../src/images/table-filter-dropdown.svg');
+    background-image: url('../images/table-filter-dropdown.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1205,7 +1205,7 @@ table input[type=checkbox] {
     left: 0;
     width: 24px;
     height: 24px;
-    background-image: url(../src/images/table-checkbox.svg);
+    background-image: url(../images/table-checkbox.svg);
     content: '';
 }
 .table-checkbox-adjuster::after {
@@ -1214,7 +1214,7 @@ table input[type=checkbox] {
     left: 0;
     width: 24px;
     height: 24px;
-    background-image: url('../src/images/table-checked-icon.svg');
+    background-image: url('../images/table-checked-icon.svg');
     content: '';
     transform: scale(0);
     transition: 0.2s all ease-in-out;
@@ -1273,7 +1273,7 @@ table .sort-icon::after {
     display: inline-block;
     width: 18px;
     height: 18px;
-    background-image: url('../src/images/table-head-sort-icon.svg');
+    background-image: url('../images/table-head-sort-icon.svg');
     content: '';
 }
 table .text-center {

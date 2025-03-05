@@ -1,0 +1,123 @@
+/* Style for the input forms */
+.input-label {
+    display: block;
+    font-weight: var(--fw-medium);
+    font-size: var(--paragraph);
+    line-height: 1.43;
+    text-transform: uppercase;
+    color: var(--input-label);
+    margin-bottom: 6px;
+}
+input, select {
+    width: 100%;
+}
+input[type=text], 
+input[type=email], 
+input[type=date],
+input[type=number],
+select {
+    height: 44px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-family: "Poppins", serif;
+    color: var(--river-bed);
+    padding: 10px var(--space-small);
+    background-color: var(--primary-color);
+    font-weight: var(--fw-regular);
+    font-size: var(--heading-h6);
+    box-shadow: 0px 1px 2px 0px #1018280D;
+    line-height: 1.5;
+    appearance: none
+}
+.input-select {
+    position: relative;
+}
+.input-select::after {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url('../images/select-dropdown-icon.svg');
+    content: '';
+}
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=date]:focus,
+input[type=number]:focus,
+select:focus {
+    border: 1px solid var(--button-bg);
+    outline: none;
+}
+input[type=text]::placeholder,
+input[type=email]::placeholder,
+input[type=date]::placeholder,
+input[type=number]::placeholder,
+select::placeholder {
+    color: var(--table-search-placeholder);
+}
+.input-file-field {
+    position: relative;
+    border: 1px solid #CBC5FF;
+    text-align: center;
+    border-radius: 12px;
+    background-color: #F3E8FF66;
+    padding: var(--space-small) var(--space-medium);
+}
+.input-file-field .input-file{
+    position: absolute;
+    color: transparent;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+.input-file-field .input-file::file-selector-button{
+    background-color: transparent;
+    border: none;
+    font-size: 0;
+}
+.file-upload-img p {
+    font-weight: var(--fw-regular);
+    font-size: var(--paragraph-small);
+    line-height: 1.5;
+}
+.fileupload-link {
+    font-weight: var(--fw-semibold);
+    font-size: var(--paragraph-small);
+    line-height: 1.25;
+    color: var(--button-bg);
+}
+.file-types {
+    font-weight: var(--fw-regular);
+    font-size: var(--paragraph-small);
+    line-height: 1.5;
+}
+input[type="date"] {
+    position: relative;
+    background: url("../images/date-icon.svg") no-repeat right 0 center; /* Custom icon */
+    background-size: 44px;
+    appearance: none; /* Removes default styling in all browsers */
+    -webkit-appearance: none;
+    text-transform: uppercase;
+    -moz-appearance: textfield; /* Removes default icon in Firefox */
+}
+.date-picker-icon::after {
+    position: absolute;
+    display: block;
+}
+input[type="date"]::-webkit-calendar-picker-indicator{
+    opacity:0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+@-moz-document url-prefix() {
+    input[type="date"] {
+        background: none;
+    }
+}
