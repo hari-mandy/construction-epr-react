@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import RegistrationForm from './RegistrationForm';
 
 const ProfileContent = () => {
     const pagelinks = [
@@ -32,7 +33,7 @@ const ProfileContent = () => {
 
     const showDropDown = () => {
         if (screenWidth <= 1024) {
-            if (openMenu == '') {
+            if (openMenu === '') {
                 setOpenMenu("open-page-tab-container");
             } else {
                 setOpenMenu("");
@@ -63,7 +64,7 @@ const ProfileContent = () => {
             </div>
             
             <TabPanel>
-                <h2>Any content 1</h2>
+                <RegistrationForm />
             </TabPanel>
             <TabPanel>
                 <h2>Any content 2</h2>
