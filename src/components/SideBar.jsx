@@ -107,19 +107,19 @@ const SideBar = () => {
             <ul className="side-menu-list-depth-1">
                 {sideMenuArray.map(([menuTitle, menuItems]) => (
                     <li key={menuTitle} className="depth-1 active-depth-1">
-                        <h6><a href="#">{menuTitle}</a></h6>
+                        <h6><a href="/">{menuTitle}</a></h6>
                         <ul className="side-menu-list-depth-2">
                             {menuItems.map((menuItem, index) => (
                                 // condition to make submenu active
                                 <li key={menuItem.name} className={index === 0 ? ("depth-2 active-depth-2") : ("depth-2")}> 
-                                    <a href="#">
+                                    <a href="/">
                                         <img src={menuItem.iconLink} alt="" />
                                         <h4>{menuItem.name}</h4>
                                     </a>
                                     {menuItem.subMenu.length > 0 ?
                                         (<ul className="side-menu-list-depth-3">
                                             {menuItem.subMenu.map((submenuItem) => (
-                                                <li className="depth-3" key={submenuItem}><p><a href="#">{submenuItem}</a></p></li>
+                                                <li className="depth-3" key={submenuItem}><p><a href="/">{submenuItem}</a></p></li>
                                             ))}
                                         </ul>) : ('')
                                     }
