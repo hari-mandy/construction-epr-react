@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import '../styles/login-page.css';
+import  LoginSwiper  from '../components/LoginSwiper'
 
 const Login = () => {
   return (
-    <div>
-      <h1>Welcome to login page</h1>
+    <div className='login-page'>
+      <LoginSwiper />
     </div>
   )
 }
