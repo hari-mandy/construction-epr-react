@@ -51,7 +51,7 @@ const RegistrationForm = () => {
     if(formData.password === '') {
       setPassowrdError(reqiredMes);
     }
-    if (!/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(formData.password)) {
+    if (formData.password != '' && !/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(formData.password)) {
       setPassowrdError("Password should have one uppercase, lowercase, number and speciacase.");
     }    
     if(formData.username === '') {
