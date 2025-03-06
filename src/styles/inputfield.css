@@ -181,3 +181,9 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     display: flex;
     justify-content: flex-end;
 }
+
+@media only screen and (max-width: 600px) {
+    .registration-form-container {
+        flex-direction: column;
+    }
+}

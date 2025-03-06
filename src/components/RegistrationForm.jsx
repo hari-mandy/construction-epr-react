@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import bcrypt from 'bcryptjs';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -35,12 +36,16 @@ const RegistrationForm = () => {
     event.preventDefault();
 
     try {
+      // Replace plain password with the hashed one
+      const hashedPassword = await bcrypt.hash(formData.password, 10);
+      const updatedFormData = { ...formData, password: hashedPassword };
+
       const response = await fetch('http://localhost:3001/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(updatedFormData),
       });
 
       if (response.ok) {
