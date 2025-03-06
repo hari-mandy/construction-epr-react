@@ -169,6 +169,12 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     max-width: 960px;
     border-radius: 20px;
 }
+.registration-form-container .form-column:first-child {
+    flex-basis: 113px;
+}
+.registration-form-container .form-column:not(:first-child) {
+    flex-basis: 256px;
+}
 .form-column {
     display: flex;
     flex-direction: column;
@@ -182,7 +188,12 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     justify-content: flex-end;
 }
 
-@media only screen and (max-width: 600px) {
+.error-mes {
+    font-size: 10px;
+    color: var(--error-mes);
+}
+
+@media only screen and (max-width: 768px) {
     .registration-form-container {
         flex-direction: column;
     }

@@ -15,6 +15,7 @@ const RegistrationForm = () => {
     city: '',
     country: '',
   });
+  const [usernameerror, setUserNameError] =useState('');
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -72,6 +73,20 @@ const RegistrationForm = () => {
     }
   };
 
+  const checkUserName = (e) => {
+    const tagetvalue = e.target.value;
+    const validateUser = async(tagetvalue) => {
+      try {
+        const response = await fetch(`http://localhost:3001/check-username?username=${tagetvalue}`);
+        const data = await response.json();
+        data.isUnique ? setUserNameError('') : setUserNameError(" *User Name is already taken*");
+      } catch (error) {
+        console.log('Error checking username');
+      }
+    }
+    validateUser(tagetvalue);
+  }
+
   return (
     <div className="registration-form-container">
       <form onSubmit={handleSubmit}>
@@ -108,8 +123,8 @@ const RegistrationForm = () => {
           </div>
           <div className="form-column">
             <div className="user-name-field">
-              <label htmlFor="username">User Name</label>
-              <input type="text" name="username" value={formData.username} onChange={handleChange} />
+              <label htmlFor="username">User Name</label><span className='error-mes'>{usernameerror}</span>
+              <input type="text" name="username" value={formData.username} onChange={handleChange} onBlur={checkUserName}/>
             </div>
             <div className="password-field">
               <label htmlFor="password">Password</label>
