@@ -15,7 +15,11 @@ const RegistrationForm = () => {
     city: '',
     country: '',
   });
-  const [usernameerror, setUserNameError] =useState('');
+  const [usernameerror, setUserNameError] = useState('');
+  const [nameerror, setNameError] = useState('');
+  const [emailerror, setEmailError] = useState('');
+  const [passworderror, setPassowrdError] = useState('');
+  const [submitSucess, setSubmitSucess] = useState('');
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -36,60 +40,87 @@ const RegistrationForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      // Replace plain password with the hashed one
-      const hashedPassword = await bcrypt.hash(formData.password, 10);
-      const updatedFormData = { ...formData, password: hashedPassword };
-
-      const response = await fetch('http://localhost:3001/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedFormData),
-      });
-
-      if (response.ok) {
-        setFormData(
-          {
-            profile_img: '',
-            name: '',
-            email: '',
-            dateofbirth: '',
-            permanent_address: '',
-            postal_code: '',
-            username: '',
-            password: '',
-            present_address: '',
-            city: '',
-            country: '',
-          }
-      )
-      } else {
-        console.error('Error submitting data:', response.status);
+    //validation 
+    const reqiredMes = "*This Field is required*"
+    if(formData.name === '') {
+      setNameError(reqiredMes);
+    }
+    if(formData.email === '') {
+      setEmailError(reqiredMes);
+    }
+    if(formData.password === '') {
+      setPassowrdError(reqiredMes);
+    }
+    if (!/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(formData.password)) {
+      setPassowrdError("Password should have one uppercase, lowercase, number and speciacase.");
+    }    
+    if(formData.username === '') {
+      setUserNameError(reqiredMes);
+    } else {
+      try {
+        // Replace plain password with the hashed one
+        const hashedPassword = await bcrypt.hash(formData.password, 10);
+        const updatedFormData = { ...formData, password: hashedPassword };
+  
+        const response = await fetch('http://localhost:3001/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedFormData),
+        });
+  
+        if (response.ok) {
+          setFormData(
+            {
+              profile_img: '',
+              name: '',
+              email: '',
+              dateofbirth: '',
+              permanent_address: '',
+              postal_code: '',
+              username: '',
+              password: '',
+              present_address: '',
+              city: '',
+              country: '',
+            },
+            setNameError(''),
+            setEmailError(''),
+            setPassowrdError(''),
+            setSubmitSucess('Your Form has been Submited Successfully !'),
+        )
+        } else {
+          console.error('Error submitting data:', response.status);
+        }
+      } catch (error) {
+        console.error('Network error:', error);
       }
-    } catch (error) {
-      console.error('Network error:', error);
     }
   };
 
   const checkUserName = (e) => {
     const tagetvalue = e.target.value;
-    const validateUser = async(tagetvalue) => {
-      try {
-        const response = await fetch(`http://localhost:3001/check-username?username=${tagetvalue}`);
-        const data = await response.json();
-        data.isUnique ? setUserNameError('') : setUserNameError(" *User Name is already taken*");
-      } catch (error) {
-        console.log('Error checking username');
+    if(tagetvalue === '') {
+      setUserNameError("*This Field is required*");
+    } else {
+      const validateUser = async(tagetvalue) => {
+        try {
+          const response = await fetch(`http://localhost:3001/check-username?username=${tagetvalue}`);
+          const data = await response.json();
+          data.isUnique ? setUserNameError('') : setUserNameError("*User Name is already taken*");
+        } catch (error) {
+          console.log('Error checking username');
+        }
       }
+      validateUser(tagetvalue);
     }
-    validateUser(tagetvalue);
   }
 
   return (
     <div className="registration-form-container">
       <form onSubmit={handleSubmit}>
+        <span className='success-mes'>{submitSucess}</span>
         <div className="registration-form-container">
           <div className="form-column">
             <div className="field-profile">
@@ -101,11 +132,11 @@ const RegistrationForm = () => {
           </div>
           <div className="form-column">
             <div className="name-field">
-              <label htmlFor="name">First Name</label>
+              <label htmlFor="name">First Name</label><span className='error-mes'>{nameerror}</span>
               <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
             </div>
             <div className="email-field">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email</label><span className='error-mes'>{emailerror}</span>
               <input type="email" name="email" value={formData.email} onChange={handleChange} />
             </div>
             <div className="dob-field">
@@ -127,7 +158,7 @@ const RegistrationForm = () => {
               <input type="text" name="username" value={formData.username} onChange={handleChange} onBlur={checkUserName}/>
             </div>
             <div className="password-field">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Password</label><span className='error-mes'>{passworderror}</span>
               <input type="password" name="password" value={formData.password} onChange={handleChange} />
             </div>
             <div className="present-address-field">

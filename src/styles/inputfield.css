@@ -189,8 +189,14 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 }
 
 .error-mes {
+    padding-left: 5px;
     font-size: 10px;
     color: var(--error-mes);
+}
+.success-mes  {
+    color: var(--success-mes);
+    display: block;
+    text-align: center;
 }
 
 @media only screen and (max-width: 768px) {
