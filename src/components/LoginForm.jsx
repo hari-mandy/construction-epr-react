@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import bcrypt from 'bcryptjs';
 import { useNavigate } from "react-router-dom";
 import passwordVisibleIcon from '../images/password-icon.svg';
@@ -6,11 +6,26 @@ import passwordVisibleIcon from '../images/password-icon.svg';
 const LoginForm = () => {
     const [showPasswword, setShowPassword] = useState('password');
     const [userData, setUserData] = useState('');
+    const [usermail, setUsermail] = useState('');
     const [userPassword, setUserPassword] = useState('');
     const [emailerror, setEmailError] = useState('');
     const [passworderror, setPasswordError] = useState('');
+    const [remMe, setremMe] = useState('');
     const navigate = useNavigate();
     
+    useEffect(() => {
+        const userStore = localStorage.getItem("usermail");
+        const passStore = localStorage.getItem("password");
+        if (userStore && passStore ) {
+            validateUserEmail(userStore);
+            const isMatch = bcrypt.compare(passStore, userData);
+            if (!isMatch) {
+                setPasswordError("*Password not Match*");
+            } else {
+                navigate("/party-master");
+            }
+        }
+    }, []);
 
     const changePasswordType = () => {
         if(showPasswword == 'password') {
@@ -34,6 +49,12 @@ const LoginForm = () => {
             if (!isMatch) {
                 setPasswordError("*Password not Match*");
             } else {
+                if (remMe) {
+                    localStorage.setItem("usermail", usermail);
+
+                    localStorage.setItem("password", userPassword);
+                    navigate("/party-master");
+                }
                 navigate("/party-master");
             }
         } catch (error) {
@@ -41,22 +62,22 @@ const LoginForm = () => {
         }
     };
     
-    
+    const validateUserEmail = async(tagetvalue) => {
+        try {
+            const response = await fetch(`http://localhost:3001/get-user?email=${tagetvalue}`);
+            const data = await response.json();
+            setUserData(data[0].password);
+          } catch (error) {
+              setEmailError("*Check the Email Entered !")
+          }
+    }
 
     const handleEmail =  (e) => {
         const tagetvalue = e.target.value;
         if(tagetvalue === '') {
             setEmailError("*This Field is required*");
         } else {
-            const validateUserEmail = async(tagetvalue) => {
-                try {
-                  const response = await fetch(`http://localhost:3001/get-user?email=${tagetvalue}`);
-                  const data = await response.json();
-                  setUserData(data[0].password);
-                } catch (error) {
-                    setEmailError("*Check the Email Entered !")
-                }
-            }
+            setUsermail(tagetvalue);
             validateUserEmail(tagetvalue);
         }
 
@@ -80,7 +101,7 @@ const LoginForm = () => {
             <div className="form-link-wrapper">
                 <div className="checkbox-wrapper">
                     <label htmlFor="value1" className="checkbox-label"> Remember me
-                        <input type="checkbox" id="value1" name="value1" value="value1" className="input-checkmark" />
+                        <input type="checkbox" id="value1" name="value1" value="value1" className="input-checkmark" checked={remMe} onChange={() => setremMe(!remMe)}/>
                         <span className="checkmark-icon"></span>
                     </label>
                 </div>
