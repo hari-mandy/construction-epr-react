@@ -5,7 +5,7 @@ import Login from './pages/Login';
 
 function App() {
   useEffect(() => {
-    document.title = 'Construction ERP';
+    document.title = 'Dummie ERP';
   }, []);
   return (
     <BrowserRouter>
