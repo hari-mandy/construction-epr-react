@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import {Link } from 'react-router-dom'
 import InputText from '../inputs/InputText'
+import { useNavigate } from "react-router-dom"
 import fetchUserData from '../../hooks/fetchUserData'
+import fetchPostData from '../../hooks/fetchPostData'
+import bcrypt from 'bcryptjs';
 
 const RegisterForm = () => {
     const [formData, setFormData] = useState({ name: '', email: '', username: '', password: '' });
     const [errorMessage, setErrorMessage] = useState ({ name: '', email: '', username: '', password: '' });
-    const reqiredMes = "*This Field is required*"
+    const reqiredMes = "*This Field is required*";
+    const navigate = useNavigate();
+    
 
     const handleEmpty = (e, type) => {
         const value = e.target.value;
@@ -52,19 +57,26 @@ const RegisterForm = () => {
         validateUser(tagetvalue, type);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if(formData.name == '') { setErrorMessage(prevState => ({...prevState, name: "*this field is required*" })); return '' }
-        if(formData.email == '') { setErrorMessage(prevState => ({...prevState, name: "*this field is required*" })); return '' }
-        if(formData.username == '') { setErrorMessage(prevState => ({...prevState, name: "*this field is required*" })); return '' }
-        if(formData.password == '') { setErrorMessage(prevState => ({...prevState, name: "*this field is required*" })); return '' }
-        
+        if(formData.email == '') { setErrorMessage(prevState => ({...prevState, email: "*this field is required*" })); return '' }
+        if(formData.username == '') { setErrorMessage(prevState => ({...prevState, username: "*this field is required*" })); return '' }
+        if(formData.password == '') { setErrorMessage(prevState => ({...prevState, password: "*this field is required*" })); return '' }
+        const hashedPassword = await bcrypt.hash(formData.password, 10);
+        const updatedFormData = { ...formData, password: hashedPassword };
+        const result = await fetchPostData('register' , updatedFormData);
+        if (result === 'success') {
+            navigate("/login");
+            return ;
+        }
+        alert("Your Registration Failed !")
     }
     
 
     return (
         <div className="login-form" >
-            <h2 className="login-heading">Welcome To Dummie ERP</h2>
+            <h2 className="login-heading">Welcome To Dummie ERP !</h2>
             <form onSubmit = {handleSubmit} >
                 <InputText containerStyle="input-text-block" labelTitle="Name" inputType="text" placeholder="" onBlurFun={(e) => handleEmpty(e, 'name')} name="name" errorMessage={errorMessage.name} inputStyle="input-text" labelStyle="input-label"/>
                 <InputText containerStyle="input-text-block" labelTitle="User Name" inputType="text" placeholder="" onBlurFun={(e) => checkUnique(e, 'username')} name="username" errorMessage={errorMessage.username} inputStyle="input-text" labelStyle="input-label"/>
