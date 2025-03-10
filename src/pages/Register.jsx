@@ -1,18 +1,17 @@
-import React from 'react';
+import React from 'react'
 import '../styles/login-page.css';
 import  LoginSwiper  from '../components/LoginSwiper'
-import  LoginForm  from '../components/forms/LoginForm'
+import  RegisterForm  from '../components/forms/RegisterForm'
 
-
-const Login = () => {
+const Register = () => {
   return (
     <div className='login-page'>
       <div className="login-content">
         <LoginSwiper />
-        <LoginForm />
+        <RegisterForm />
       </div>
     </div>
   )
 }
 
-export default Login;
+export default Register

@@ -88,7 +88,7 @@ const RegistrationForm = () => {
             setNameError(''),
             setEmailError(''),
             setPassowrdError(''),
-            setSubmitSucess('Your Form has been Submited Successfully !'),
+            setSubmitSucess('Your Form has been Submitted Successfully !'),
         )
         } else {
           console.error('Error submitting data:', response.status);

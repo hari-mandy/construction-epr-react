@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import bcrypt from 'bcryptjs'
+import {Link} from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
 import Cookies from "js-cookie";
-import InputText from './inputs/InputText'
-import CheckBox from './inputs/CheckBox'
-import fetchUserData from '../hooks/fetchUserData'
+import InputText from '../inputs/InputText'
+import CheckBox from '../inputs/CheckBox'
+import fetchUserData from '../../hooks/fetchUserData'
 
 const LoginForm = () => {
     const [userData, setUserData] = useState('');
-    const [usermail, setUsermail] = useState('');
     const [userPassword, setUserPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState({
         email: '',
@@ -26,14 +26,10 @@ const LoginForm = () => {
 
     const validateUser = async (event) => {
         event.preventDefault(); // Only needed if called from a form submission
-    
         try {
             const isMatch = await bcrypt.compare(userPassword, userData);
             if (!isMatch) {
-                setErrorMessage(prevState => ({
-                    ...prevState,
-                    password: "*Password not Match*"
-                }));
+                setErrorMessage(prevState => ({ ...prevState, password: "*Password not Match*"}));
                 return'';
             }
             if (remMe) {
@@ -49,10 +45,7 @@ const LoginForm = () => {
         try {
             const data = await fetchUserData('get-user?email=', tagetvalue);
             setUserData(data[0].password);
-            setErrorMessage(prevState => ({
-                ...prevState,
-                email: ""
-            }));
+            setErrorMessage(prevState => ({...prevState, email: ""}));
         } catch {
             setErrorMessage(prevState => ({
                 ...prevState,
@@ -64,13 +57,9 @@ const LoginForm = () => {
     const handleEmail =  (e) => {
         const tagetvalue = e.target.value;
         if(tagetvalue === '') {
-            setErrorMessage(prevState => ({
-                ...prevState,
-                email: "*This Field is required*"
-            }));
+            setErrorMessage(prevState => ({...prevState, email: "*This Field is required*"}));
             return '';
         }
-        setUsermail(tagetvalue);
         validateUserEmail(tagetvalue);
     }
 
@@ -79,7 +68,7 @@ const LoginForm = () => {
             <p className="login-eyebrow">WELCOME BACK</p>
             <h2 className="login-heading">Login to start your session</h2>
             <form onSubmit={validateUser}>
-            <InputText containerStyle="input-text-block" labelTitle="Name" inputType="text" placeholder="" onBlurFun={handleEmail} name="email" errorMessage={errorMessage.email} inputStyle="input-text" labelStyle="input-label"/>
+            <InputText containerStyle="input-text-block" labelTitle="Name" inputType="email" placeholder="" onBlurFun={handleEmail} name="email" errorMessage={errorMessage.email} inputStyle="input-text" labelStyle="input-label"/>
             <InputText containerStyle="input-text-block password-icon" labelTitle="Password" inputType="password" placeholder="" onChange={(e) => setUserPassword(e.target.value)} name="password" errorMessage={errorMessage.password} inputStyle="input-text" labelStyle="input-label"/>
                 <div className="form-link-wrapper">
                     <CheckBox labelTitle="Remember me" containerStyle="checkbox-wrapper" labelStyle="checkbox-label" name="value1" inputStyle="input-checkmark" onChangeFun={() => setremMe(!remMe)} checkedValue={remMe} checkboxStyle="checkmark-icon"/>
@@ -87,6 +76,7 @@ const LoginForm = () => {
                 </div>
                 <input type="submit" value="Login" className="login-btn" />
             </form>
+            <p className='register-link para-small'>Don't have an account yet?<Link to="/register"> Register</Link></p>
         </div>
     )
 }

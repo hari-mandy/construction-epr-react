@@ -192,6 +192,13 @@ body {
 .login-btn:hover {
     background-color: var(--button-hover);
 }
+.register-link {
+    text-align: center;
+    margin: var(--space-small) 0;
+}
+.register-btn {
+    margin: var(--space-small) 0 0;
+}
 
 /* style for the swiper adjustements in login page */
 
