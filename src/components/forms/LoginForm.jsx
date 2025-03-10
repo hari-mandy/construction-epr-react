@@ -68,7 +68,7 @@ const LoginForm = () => {
             <p className="login-eyebrow">WELCOME BACK</p>
             <h2 className="login-heading">Login to start your session</h2>
             <form onSubmit={validateUser}>
-            <InputText containerStyle="input-text-block" labelTitle="Name" inputType="email" placeholder="" onBlurFun={handleEmail} name="email" errorMessage={errorMessage.email} inputStyle="input-text" labelStyle="input-label"/>
+            <InputText containerStyle="input-text-block" labelTitle="Email" inputType="email" placeholder="" onBlurFun={handleEmail} name="email" errorMessage={errorMessage.email} inputStyle="input-text" labelStyle="input-label"/>
             <InputText containerStyle="input-text-block password-icon" labelTitle="Password" inputType="password" placeholder="" onChange={(e) => setUserPassword(e.target.value)} name="password" errorMessage={errorMessage.password} inputStyle="input-text" labelStyle="input-label"/>
                 <div className="form-link-wrapper">
                     <CheckBox labelTitle="Remember me" containerStyle="checkbox-wrapper" labelStyle="checkbox-label" name="value1" inputStyle="input-checkmark" onChangeFun={() => setremMe(!remMe)} checkedValue={remMe} checkboxStyle="checkmark-icon"/>

@@ -15,7 +15,7 @@ const RegisterForm = () => {
 
     const handleEmpty = (e, type) => {
         const value = e.target.value;
-        if (!value) {  // Check if the input is empty
+        if (!value) { 
             setErrorMessage(prevState => ({...prevState,[type]: reqiredMes}));
             return '';
         }
