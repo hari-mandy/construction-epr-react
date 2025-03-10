@@ -6,7 +6,7 @@ const InputText = ({labelTitle, containerStyle, inputType, placeholder, onBlurFu
 
   const [showPassword, setShowPassword] = useState('password');
   const changePasswordType = () => {
-      if(showPassword == 'password') {
+      if(showPassword === 'password') {
           setShowPassword('text');
       }
       else {
