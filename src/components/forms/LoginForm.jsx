@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import bcrypt from 'bcryptjs'
-import {Link} from 'react-router-dom'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import Cookies from "js-cookie";
 import InputText from '../inputs/InputText'
 import CheckBox from '../inputs/CheckBox'
@@ -72,7 +71,7 @@ const LoginForm = () => {
             <InputText containerStyle="input-text-block password-icon" labelTitle="Password" inputType="password" placeholder="" onChange={(e) => setUserPassword(e.target.value)} name="password" errorMessage={errorMessage.password} inputStyle="input-text" labelStyle="input-label"/>
                 <div className="form-link-wrapper">
                     <CheckBox labelTitle="Remember me" containerStyle="checkbox-wrapper" labelStyle="checkbox-label" name="value1" inputStyle="input-checkmark" onChangeFun={() => setremMe(!remMe)} checkedValue={remMe} checkboxStyle="checkmark-icon"/>
-                    <a href="#" className="forgot-password-link">Forgot Password?</a>
+                    <Link to="/forget-password" className="forgot-password-link">Forgot Password?</Link>
                 </div>
                 <input type="submit" value="Login" className="login-btn" />
             </form>

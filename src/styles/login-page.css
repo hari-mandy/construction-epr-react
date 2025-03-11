@@ -199,6 +199,9 @@ body {
 .register-btn {
     margin: var(--space-small) 0 0;
 }
+.verify-email {
+    margin-top: var(--space-small);
+}
 
 /* style for the swiper adjustements in login page */
 

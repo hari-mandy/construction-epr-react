@@ -40,7 +40,7 @@ const RegisterForm = () => {
                 setErrorMessage(prevState => ({...prevState, [type]: "" }));
                 setFormData(prevState => ({...prevState, [type]: tagetvalue }));
                 return ;
-            } 
+            }
             setErrorMessage(prevState => ({...prevState, [type]: "*Is already in use*" }));
 
         } catch (error) {
