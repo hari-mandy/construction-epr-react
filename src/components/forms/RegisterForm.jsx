@@ -59,10 +59,10 @@ const RegisterForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if(formData.name == '') { setErrorMessage(prevState => ({...prevState, name: "*this field is required*" })); return '' }
-        if(formData.email == '') { setErrorMessage(prevState => ({...prevState, email: "*this field is required*" })); return '' }
-        if(formData.username == '') { setErrorMessage(prevState => ({...prevState, username: "*this field is required*" })); return '' }
-        if(formData.password == '') { setErrorMessage(prevState => ({...prevState, password: "*this field is required*" })); return '' }
+        if(formData.name === '') { setErrorMessage(prevState => ({...prevState, name: "*this field is required*" })); return '' }
+        if(formData.email === '') { setErrorMessage(prevState => ({...prevState, email: "*this field is required*" })); return '' }
+        if(formData.username === '') { setErrorMessage(prevState => ({...prevState, username: "*this field is required*" })); return '' }
+        if(formData.password === '') { setErrorMessage(prevState => ({...prevState, password: "*this field is required*" })); return '' }
         const hashedPassword = await bcrypt.hash(formData.password, 10);
         const updatedFormData = { ...formData, password: hashedPassword };
         const result = await fetchPostData('register' , updatedFormData);

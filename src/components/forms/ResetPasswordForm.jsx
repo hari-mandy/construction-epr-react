@@ -3,7 +3,7 @@ import InputText from '../inputs/InputText'
 import { useSearchParams } from "react-router-dom";
 import fetchPostData from '../../hooks/fetchPostData'
 import bcrypt from 'bcryptjs';
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const ResetPasswordForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
