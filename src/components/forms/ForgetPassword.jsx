@@ -18,7 +18,7 @@ const ForgetPassword = () => {
         }
         setErrorMessage('');
         try {
-            const data = await fetchUserData('forgetPassword?email=', email);
+            const data = await fetchUserData('forgetpassword?email=', email);
             setSuccessMessage(data.message)
         } catch {
             console.log("connection failed !")
