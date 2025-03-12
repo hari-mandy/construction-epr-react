@@ -202,6 +202,9 @@ body {
 .verify-email {
     margin-top: var(--space-small);
 }
+.txt-align-center {
+    text-align: center;
+}
 
 /* style for the swiper adjustements in login page */
 
