@@ -32,9 +32,9 @@ const RegisterForm = () => {
             let response = {}; // Declare response as a mutable variable
     
             if (type === 'username') {
-                response = await fetchUserData('check-username?username=', tagetvalue);
+                response = await fetchUserData('checkunique?username=', tagetvalue);
             } else if (type === 'email') {
-                response = await fetchUserData('check-email?email=', tagetvalue);
+                response = await fetchUserData('checkunique?email=', tagetvalue);
             }
             if (response.isUnique) {
                 setErrorMessage(prevState => ({...prevState, [type]: "" }));
