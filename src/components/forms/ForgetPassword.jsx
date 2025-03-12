@@ -19,7 +19,11 @@ const ForgetPassword = () => {
         setErrorMessage('');
         try {
             const data = await fetchUserData('forgetpassword?email=', email);
-            setSuccessMessage(data.message)
+            if(data.message) {
+                setSuccessMessage(data.message)
+                return ;
+            }
+            setErrorMessage('This Mail id is not registered')
         } catch {
             console.log("connection failed !")
         }
