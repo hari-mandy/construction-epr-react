@@ -19,14 +19,6 @@ const LoginForm = () => {
             navigate("/party-master");
         }
     }, []);
-
-    const handleChange = (e) => {
-        const { name } = e.target; // Get the input's name
-        setErrorMessage(prevState => ({ 
-            ...prevState, 
-            password: ''  // Dynamically clear the error for the field being edited
-        }));
-    };
     
     const onUserPassword = (e) => {
         setUserPassword(e.target.value);
@@ -59,7 +51,7 @@ const LoginForm = () => {
             <p className="login-eyebrow">WELCOME BACK</p>
             <h2 className="login-heading">Login to start your session</h2>
             <form onSubmit={validUser}>
-                <InputText containerStyle="input-text-block" labelTitle="Email" inputType="email" placeholder="" onBlurFun={handleunique} name="email" errorMessage={errorMessage.email} inputStyle="input-text" labelStyle="input-label" Onchange={handleChange}/>
+                <InputText containerStyle="input-text-block" labelTitle="Email" inputType="email" placeholder="" onBlurFun={handleunique} name="email" errorMessage={errorMessage.email} inputStyle="input-text" labelStyle="input-label"/>
                 <InputText containerStyle="input-text-block password-icon" labelTitle="Password" inputType="password" placeholder="" onChange={onUserPassword} name="password" errorMessage={errorMessage.password} inputStyle="input-text" labelStyle="input-label"/>
                 <div className="form-link-wrapper">
                     <CheckBox labelTitle="Remember me" containerStyle="checkbox-wrapper" labelStyle="checkbox-label" name="value1" inputStyle="input-checkmark" onChangeFun={() => setremMe(!remMe)} checkedValue={remMe} checkboxStyle="checkmark-icon"/>
