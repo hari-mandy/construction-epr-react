@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import passwordVisibleIcon from '../../images/password-icon.svg';
 
 
-const InputText = ({labelTitle, containerStyle, inputType, placeholder, onBlurFun, onChange, name, errorMessage, inputStyle, labelStyle}) => {
+const InputText = ({labelTitle, containerStyle, inputType, placeholder, onBlurFun, onChange, name, errorMessage, inputStyle, labelStyle, handleFocus}) => {
 
   const [showPassword, setShowPassword] = useState('password');
   const changePasswordType = () => {
@@ -16,7 +16,7 @@ const InputText = ({labelTitle, containerStyle, inputType, placeholder, onBlurFu
   return (
     <div className={containerStyle}>
         <label htmlFor={name} className={labelStyle}>{labelTitle}</label>
-        <input type={inputType === 'password' ? (showPassword) : inputType} className={inputStyle} name={name} placeholder={placeholder} onBlur={onBlurFun} onChange={onChange}/>
+        <input type={inputType === 'password' ? (showPassword) : inputType} className={inputStyle} name={name} placeholder={placeholder} onBlur={onBlurFun} onFocus={handleFocus} onChange={onChange}/>
         {inputType === 'password' ? <span className='password-visibe' onClick={changePasswordType}><img src={passwordVisibleIcon} alt="visible icon" /></span> : ''}
         {errorMessage && <span className="error-mes">{errorMessage}</span>}
     </div>
