@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs'
 import Cookies from "js-cookie";
 
 const handleEmail =  (e, requireMes, validMes) => { //Function to verfiy it is not null.
-    const tagetvalue = e.target.value;
+    const tagetvalue = e;
     if(tagetvalue === '') {
         return requireMes;
     }

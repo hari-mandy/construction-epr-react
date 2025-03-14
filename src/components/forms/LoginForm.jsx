@@ -41,7 +41,7 @@ const LoginForm = () => {
 
     const handleunique = async (e, requireMes = '*This Field is required*', checkMailMes = '*Check the Mail Entered !') => {
         if(oldEmailValue.current !== e.target.value || oldEmailValue !== '') {
-            const returnValue = await handleEmail(e, requireMes, checkMailMes );
+            const returnValue = await handleEmail(e.target.value, requireMes, checkMailMes );
             if (returnValue ===  requireMes || returnValue === checkMailMes) {
                 setErrorMessage(prevState => ({ ...prevState, email: returnValue }));
                 return ;
