@@ -257,7 +257,7 @@ h6 {
 /* header style */
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: var(--space-small) var(--space-large);
     background-color: var(--primary-color);
@@ -298,6 +298,7 @@ header {
     display: flex;
     align-items: center;
     gap: var(--space-large);
+    justify-content: space-between;
 }
 .user-tab::after {
     position: absolute;
@@ -605,12 +606,12 @@ header {
 .side-menu-bar {
     width: 320px;
     position: fixed;
-    top: 81px;
-    z-index: 50;
+    top: 0;
+    z-index: 999;
     background-color: var(--primary-color);
     padding: 0 var(--space-large) var(--space-large) ;
     overflow: auto;
-    height: calc(100vh - 87px);
+    height: 100vh;
     transition: 0.5s all ease-in-out;
     border-right: solid 1px var(--desert-storm);
 }
@@ -631,32 +632,31 @@ header {
 .depth-1 {
     position: relative;
 }
-.depth-1 h6 > a {
+.depth-1 > h6 {
     color: var(--steel);
     padding: var(--space-small) 0;
     padding-right: var(--space-small);
     text-transform: uppercase;
     display: flex;
+    cursor: pointer;
     justify-content: space-between;
     transition: 0.5s all ease-in-out;
 }
-.depth-1 h6 > a::after {
+.depth-1 > h6::after {
     display: block;
     width: 20px;
     height: 20px;
     background-image: url(../images/Plus.svg);
     content: '';
 }
-.depth-1 h6 > a:hover {
+.depth-1 > h6:hover {
     color: var(--button-hover);
 }
 .side-menu-list-depth-2 {
-    position: absolute;
-    opacity: 0;
+    display: none;
 }
-.depth-1.active-depth-1 .side-menu-list-depth-2 {
-    position: relative;
-    opacity: 1;
+.depth-1 .side-menu-list-depth-2.active-depth-2 {
+   display: block;
 }
 .depth-2 a{
     padding: 12px;
@@ -732,9 +732,7 @@ header {
     filter: brightness(0) invert(1);
 }
 .depth-2.active-depth-2 .side-menu-list-depth-3 {
-    margin-top: var(--space-small);
-    position: relative;
-    opacity: 1;
+    display: block;
 }
 .hamburg-sidemenu .sidemenu-close-icon {
     display: none;
@@ -744,6 +742,9 @@ header {
 }
 .hamburg-sidemenu.open-menu .sidemenu-open-icon{
     display: none;
+}
+.side-menu-bar .site-logo {
+    padding: 40px 0;
 }
 @media only screen and (max-width: 1024px) {
     .side-menu-bar {

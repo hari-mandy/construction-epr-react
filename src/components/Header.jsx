@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import sitelogo from '../images/dummies-icon.png';
 import notification from '../images/Notifications.png';
 import userprofile from '../images/user-profile.png';
-import MenuCloseIcon from './MenuCloseIcon';
-import MenuOpenIcon from './MenuOpenIcon';
-import DesktopSearchIcon from './DesktopSearchIcon';
-import MobileSearchIcon from './MobileSearchIcon';
+import MenuCloseIcon from './icons/MenuCloseIcon';
+import MenuOpenIcon from './icons/MenuOpenIcon';
+import DesktopSearchIcon from './icons/DesktopSearchIcon';
+import MobileSearchIcon from './icons/MobileSearchIcon';
 
 const Header = () => {
     const [width, setWidth] = useState(window.innerWidth);//state to update the window width.
@@ -59,13 +59,6 @@ const Header = () => {
     
   return (
     <header>
-        <div className="site-logo">
-            <img src={sitelogo} alt="site Logo"></img>
-            <button className="hamburg-sidemenu" onClick={menuToggle}>
-                <MenuCloseIcon />
-                <MenuOpenIcon />
-            </button>
-        </div>
         <div className="header-content">
             <div className="header-search">
                 <div className="desktop-search">
