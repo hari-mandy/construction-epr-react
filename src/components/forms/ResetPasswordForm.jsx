@@ -1,15 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import InputText from '../inputs/InputText'
 import { useSearchParams } from "react-router-dom";
 import fetchPostData from '../../hooks/fetchPostData'
 import bcrypt from 'bcryptjs';
 import { useNavigate } from "react-router-dom"
+import fetchUserData from '../../hooks/fetchUserData';
 
 const ResetPasswordForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
   const navigate = useNavigate();
+
+   useEffect(() => {
+    async function fetchToken() {
+        const response = await fetchUserData('validtoken?token=', token);
+        if (!response.isValid) {
+          navigate("/invalid-token")
+          return
+        }
+        return
+    }
+    fetchToken();
+    }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

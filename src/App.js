@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgetPassword from "./pages/Forgetpassword";
 import ResetPassword from "./pages/ResetPassword";
+import InvalidToken from "./pages/InvalidToken";
 import returnAuthToken from "./app/auth";
 
 function App() {
@@ -34,11 +35,13 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<PartyMaster />} />
+                <Route path="/party-master" element={<PartyMaster />} />
+                <Route path="/invalid-token" element={<InvalidToken />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/forget-password" element={<ForgetPassword />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
-                <Route path="*" element={<Navigate to={tokenValid ? "/" : "/login"} replace />} />
+                {!tokenValid ? <Route path="*" element={<Login />} /> : ""}
             </Routes>
         </Router>
     );
