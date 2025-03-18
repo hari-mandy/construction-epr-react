@@ -661,11 +661,15 @@ header {
 .depth-2 a{
     padding: 12px;
     display: flex;
+    margin-bottom: 10px;
     align-items: center;
     color: var(--river-bed);
     gap: var(--space-small);
     transition: 0.4s all ease-in-out;
     border-radius: 9px;
+}
+ul:has(li.show-menu) {
+    display: block;
 }
 .depth-2 a img {
     transition: 0.4s all ease-in-out;
@@ -681,11 +685,24 @@ header {
 .side-menu-list-depth-3 {
     /* attention needed */
     background-color: var(--submenu-bg);
-    position: absolute;
-    opacity: 0;
+    display: none;
     border-radius: 7px;
     padding: var(--space-small) 0 var(--space-small) var(--space-large);
     margin-left: 12px;
+}
+.show-menu ul{
+    display: block;
+}
+.show-menu > a {
+    background-color: var(--button-bg);
+    color: var(--primary-color);
+}
+.show-menu > a img {
+    filter: brightness(0) invert(1);
+}
+.show-menu a::before {
+    filter: brightness(0) invert(1);
+    transform: rotate(180deg);
 }
 .depth-3:not(:last-child){
     margin-bottom: 5px;
@@ -715,6 +732,7 @@ header {
     background-image: url(../images/menu-dropdown.svg);
     content: '';
     top: 12px;
+    transition: all 0.3s ease-out;
     right: 7px;
 }
 .depth-2:has(> :nth-child(2):last-child) > a:hover::before {

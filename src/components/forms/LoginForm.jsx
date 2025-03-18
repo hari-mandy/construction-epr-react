@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate, Link } from "react-router-dom"
-import Cookies from "js-cookie";
 import InputText from '../inputs/InputText'
 import CheckBox from '../inputs/CheckBox'
 import { handleEmail, validateUser } from '../../services/login-services'

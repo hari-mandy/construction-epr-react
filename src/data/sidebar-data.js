@@ -23,8 +23,8 @@ const sideMenus = {
             "subMenu" : [],
         },
         {
-            "name" : "Menu 3",
-            "path" : "/menu-3",
+            "name" : "Party Master",
+            "path" : "/party-master",
             "iconLink" : Iconebox,
             "subMenu" : [],
         },
@@ -36,14 +36,25 @@ const sideMenus = {
         },
         {
             "name" : "Menu 5",
-            "path" : "/menu-5",
             "iconLink" : menu5,
-            "subMenu" : [
-                "Submenu 1",
-                "Submenu 2",
-                "Submenu 3",
-                "Submenu 4",
-            ],
+            "subMenu": [
+                {
+                    name : "SubMenu 1",
+                    path : "/submenu-one"
+                },
+                {
+                    name : "SubMenu 2",
+                    path : "/submenu-two"
+                },
+                {
+                    name : "SubMenu 3",
+                    path : "/submenu-three"
+                },
+                {
+                    name : "SubMenu 4",
+                    path : "/submenu-four"
+                }
+            ]
         },
         {
             "name" : "Menu 6",
@@ -56,12 +67,24 @@ const sideMenus = {
         {
             "name" : "Apps",
             "iconLink" : menu4,
-            "subMenu" : [
-                "Submenu 1",
-                "Submenu 2",
-                "Submenu 3",
-                "Submenu 4",
-            ],
+            "subMenu": [
+                {
+                    name : "SubMenu 1",
+                    path : "/submenu-one"
+                },
+                {
+                    name : "SubMenu 2",
+                    path : "/submenu-two"
+                },
+                {
+                    name : "SubMenu 3",
+                    path : "/submenu-three"
+                },
+                {
+                    name : "SubMenu 4",
+                    path : "/submenu-four"
+                }
+            ]
         },
         {
             "name" : "Apps 1",
@@ -78,12 +101,24 @@ const sideMenus = {
         {
             "name" : "Apps",
             "iconLink" : menu4,
-            "subMenu" : [
-                "Submenu 1",
-                "Submenu 2",
-                "Submenu 3",
-                "Submenu 4",
-            ],
+            "subMenu": [
+                {
+                    name : "SubMenu 1",
+                    path : "/submenu-one"
+                },
+                {
+                    name : "SubMenu 2",
+                    path : "/submenu-two"
+                },
+                {
+                    name : "SubMenu 3",
+                    path : "/submenu-three"
+                },
+                {
+                    name : "SubMenu 4",
+                    path : "/submenu-four"
+                }
+            ]
         },
         {
             "name" : "Apps 1",
