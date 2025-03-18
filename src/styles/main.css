@@ -668,9 +668,9 @@ header {
     transition: 0.4s all ease-in-out;
     border-radius: 9px;
 }
-ul:has(li.show-menu) {
+/* ul:has(li.show-menu) {
     display: block;
-}
+} */
 .depth-2 a img {
     transition: 0.4s all ease-in-out;
 }
