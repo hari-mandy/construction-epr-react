@@ -4,9 +4,9 @@ import menu4 from '../images/menu-4.svg';
 import menu5 from '../images/menu-5.svg';
 import menu6 from '../images/menu-6.svg';
 import menu7 from '../images/menu-7.svg';
-import menu8 from '../images/menu-8.svg';
-import menu9 from '../images/menu-9.svg';
-import menu10 from '../images/menu-10.svg';
+// import menu8 from '../images/menu-8.svg';
+// import menu9 from '../images/menu-9.svg';
+// import menu10 from '../images/menu-10.svg';
 
 const sideMenus = {
     "pages": [

@@ -10,10 +10,10 @@ const SideBar = () => {
     const [isExpanded, setIsExpanded] = useState(false);
 
 	return (
-        <section className="side-menu-bar">
+        <section className={`side-menu-bar ${isExpanded ? "collapse-side-menu" : ""}`}>
             <div className="site-logo">
                 <img src={sitelogo} alt="site Logo"></img>
-                <button className="hamburg-sidemenu" >
+                <button className="hamburg-sidemenu" onClick={() => setIsExpanded(true)} >
                     <MenuCloseIcon />
                     <MenuOpenIcon />
                 </button>
