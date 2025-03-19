@@ -1,64 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import sitelogo from '../images/dummies-icon.png';
-import notification from '../images/Notifications.png';
-import userprofile from '../images/user-profile.png';
-import MenuCloseIcon from './icons/MenuCloseIcon';
-import MenuOpenIcon from './icons/MenuOpenIcon';
-import DesktopSearchIcon from './icons/DesktopSearchIcon';
-import MobileSearchIcon from './icons/MobileSearchIcon';
+import React, { useState, useEffect, useContext } from 'react'
+import notification from '../images/Notifications.png'
+import userprofile from '../images/user-profile.png'
+import MenuCloseIcon from './icons/MenuCloseIcon'
+import MenuOpenIcon from './icons/MenuOpenIcon'
+import DesktopSearchIcon from './icons/DesktopSearchIcon'
+import MobileSearchIcon from './icons/MobileSearchIcon'
+import { MenuTogglecontext } from '../context/menuToggleContext'
 
 const Header = () => {
-    const [width, setWidth] = useState(window.innerWidth);//state to update the window width.
-
-    //useEffect hook to moniter the window width.
-    useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener("resize", handleResize);
-    }, []);
+    const { toggleValue, setToggleValue } = useContext(MenuTogglecontext);
 
     //function to toggle the search bar in responsive.
     const openSearchBar = () => {
         document.querySelector('.mobile-search').classList.toggle('open');
     }
 
-    const menuToggle = () => {
-        const menuButton = document.querySelector(".hamburg-sidemenu");
-        const sideMenu = document.querySelector(".side-menu-bar");
-        const mainContent = document.querySelector(".main-content");
-        const mainTag = document.querySelector("body");
+    const handelSideBarToggle = () => {
+        setToggleValue(true); // Update the context value
+    };
 
-        sideMenu.classList.toggle("collapse-side-menu");
-        mainContent.classList.toggle("expand-main-content");
-
-        // Change icon and add scroll-lock only if screen width is less than 1024px
-        if (width < 1024) {
-            menuButton.classList.toggle("open-menu");
-            mainTag.classList.toggle("scroll-lock");
-        }
-        
-        // Handle window resize for responsive behavior
-        function handleResize() {
-            if (window.innerWidth < 1024) {
-                sideMenu.classList.add("collapse-side-menu");
-                mainContent.classList.add("expand-main-content");
-            } else {
-                sideMenu.classList.remove("collapse-side-menu");
-                mainContent.classList.remove("expand-main-content");
-                menuButton.classList.remove("open-menu"); // Reset icon state
-                mainTag.classList.remove("scroll-lock"); // Remove scroll lock on large screens
-            }
-        }
-
-        // Check on page load and on resize
-        window.addEventListener("resize", function () {
-            if(window.innerWidth >=1024){
-                handleResize();            
-            }
-        });
-    }
     
   return (
     <header>
+        <button className="hamburg-sidemenu" onClick={handelSideBarToggle}>
+            <MenuOpenIcon />
+        </button>
         <div className="header-content">
             <div className="header-search">
                 <div className="desktop-search">

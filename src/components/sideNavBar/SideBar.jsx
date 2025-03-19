@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
-import MenuOpenIcon from '../icons/MenuOpenIcon';
-import sitelogo from '../../images/dummies-icon.png';
+import React, { useState, useContext, useEffect } from 'react'
+import MenuOpenIcon from '../icons/MenuOpenIcon'
+import sitelogo from '../../images/dummies-icon.png'
 import sideMenus from '../../data/sidebar-data'
-import MenuCloseIcon from '../icons/MenuCloseIcon';
+import MenuCloseIcon from '../icons/MenuCloseIcon'
 import SubMenuOne from '../sideNavBar/SubMenuOne'
+import { MenuTogglecontext } from '../../context/menuToggleContext'
 
 const SideBar = () => {
     const sideMenuArray = Object.entries(sideMenus);
     const [isExpanded, setIsExpanded] = useState(false);
+
+    const { toggleValue, setToggleValue } = useContext(MenuTogglecontext);
+
+    useEffect(() => {
+        setIsExpanded(false);
+        setToggleValue(false);
+        return;
+    },[toggleValue])
 
 	return (
         <section className={`side-menu-bar ${isExpanded ? "collapse-side-menu" : ""}`}>
