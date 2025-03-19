@@ -257,7 +257,7 @@ h6 {
 /* header style */
 header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: var(--space-small) var(--space-large);
     background-color: var(--primary-color);
@@ -652,7 +652,7 @@ header {
 .depth-1 > h6:hover {
     color: var(--button-hover);
 }
-.side-menu-list-depth-2 {
+ul.side-menu-list-depth-2 {
     display: none;
 }
 .depth-1 .side-menu-list-depth-2.active-depth-2 {
@@ -668,9 +668,6 @@ header {
     transition: 0.4s all ease-in-out;
     border-radius: 9px;
 }
-/* ul:has(li.show-menu) {
-    display: block;
-} */
 .depth-2 a img {
     transition: 0.4s all ease-in-out;
 }
