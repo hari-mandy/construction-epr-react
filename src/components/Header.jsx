@@ -1,22 +1,42 @@
 import React, { useState, useEffect, useContext } from 'react'
 import notification from '../images/Notifications.png'
-import userprofile from '../images/user-profile.png'
 import MenuCloseIcon from './icons/MenuCloseIcon'
 import MenuOpenIcon from './icons/MenuOpenIcon'
 import DesktopSearchIcon from './icons/DesktopSearchIcon'
 import MobileSearchIcon from './icons/MobileSearchIcon'
-import { MenuTogglecontext } from '../context/menuToggleContext'
+import { MenuTogglecontext, NotificationToggleContext } from '../context/menuToggleContext'
+import UserMenu from './header/UserMenu'
+import InputText from './inputs/InputText'
 
 const Header = () => {
     const { toggleValue, setToggleValue } = useContext(MenuTogglecontext);
+    const { notificationToggle, setNotificationToggle } = useContext(NotificationToggleContext);
+    const [searchOpen, setSearchOpen] = useState(false);
 
     //function to toggle the search bar in responsive.
     const openSearchBar = () => {
-        document.querySelector('.mobile-search').classList.toggle('open');
+        if(!searchOpen){
+            setSearchOpen(true);
+            return;
+        }
+        setSearchOpen(false);
+    }
+
+    const notificaionToggle = () => {
+        if(!notificationToggle) {
+            setNotificationToggle(true);
+            return ;
+        }
+        setNotificationToggle(false);
     }
 
     const handelSideBarToggle = () => {
-        setToggleValue(true); // Update the context value
+        if(!toggleValue) {
+            setToggleValue(true);
+            return ;
+        }
+        setToggleValue(false);
+        return ;
     };
 
     
@@ -31,9 +51,9 @@ const Header = () => {
                     <button className="search-icon">
                         <DesktopSearchIcon />
                     </button>
-                    <input type="search" className="input-search" placeholder="Search..."></input>
+                    <InputText inputType="search" inputStyle="input-search" placeholder="Search..." />
                 </div>
-                <div className="mobile-search">
+                <div className={`mobile-search ${searchOpen ? 'open' : ''}`}>
                     <button className="open-search" onClick={openSearchBar}>
                         <MobileSearchIcon />
                         <MenuCloseIcon />
@@ -42,31 +62,14 @@ const Header = () => {
                         <button className="search-icon">
                             <MobileSearchIcon />
                         </button>
-                        <input type="search" className="input-search" placeholder="Search..."></input>
+                        <InputText inputType="search" inputStyle="input-search" placeholder="Search..." />
                     </div>
                 </div>
             </div>
-            <div className="notification-icon">
+            <div className="notification-icon" onClick={notificaionToggle}>
                 <img src={notification} alt=""></img>
             </div>
-            <div className="user-tab">
-                <img src={userprofile}alt="User profile"></img>
-                <h4 className="user-name">Manohar</h4>
-                <span className="dropdown-icon"></span>
-                <ul className="user-info-list">
-                    <li className="user-detail">
-                        <img src={userprofile} alt="user"></img>
-                        <div>
-                            <h6>Manohar</h6>
-                            <a className="para-small user-email" href="mailto:someone@example.com">manohar@mail.com</a>
-                        </div>
-                    </li>
-                    <li className="user-profile"><a href="http://localhost:3000/">My Profile</a></li>
-                    <li className="user-integration"><a href="http://localhost:3000/">Integrations</a></li>
-                    <li className="user-history"><a href="http://localhost:3000/">History</a></li>
-                    <li className="user-logout"><a href="http://localhost:3000/">Logout</a></li>
-                </ul>
-            </div>
+            <UserMenu />
         </div>
     </header>
   )

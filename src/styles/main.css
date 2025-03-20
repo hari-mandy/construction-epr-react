@@ -294,6 +294,13 @@ header {
 .user-tab .user-name {
     color: var(--river-bed);
 }
+.user-avatar {
+    height: 36px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
 .site-logo {
     display: flex;
     align-items: center;
@@ -310,10 +317,10 @@ header {
 }
 .header-search {
     width: 372px;
-    height: 45px;
+    height: 48px;
     position: relative;
     background-color: var(--white-smoke);
-    padding: 10px var(--space-small);
+    padding: 12.5px var(--space-small);
     margin-right: var(--space-small);
     border-radius: 8px;
 }
@@ -340,11 +347,20 @@ header {
 }
 .input-search::placeholder {
     color: #A7ABBA;
+    line-height: calc(22/18);
+    letter-spacing: 0;
+    font-size: var(--heading-h4);
 }
 .notification-icon {
     max-height: 48px;
     padding-right: var(--space-small);
     border-right: 1px solid #E2E8F0;
+}
+.notification-icon img {
+    height: 48px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    cursor: pointer;
 }
 .dropdown-icon {
     width: 24px;
@@ -368,6 +384,7 @@ header {
 .user-detail {
     display: flex;
     gap:var(--space-small);
+    align-items: center;
 }
 .user-email {
 	margin-top: 10px;
@@ -482,7 +499,10 @@ header {
     display: none;
 }
 @media only screen and (max-width: 1024px) {
-    .site-logo > img {
+    .side-menu-bar .hamburg-sidemenu .sidemenu-close-icon {
+        display: block;
+    }
+    .side-menu-bar .sidemenu-open-icon {
         display: none;
     }
     .header-content .notification-icon {
@@ -522,6 +542,9 @@ header {
         border-bottom: 1px solid var(--table-border);
         clip-path: inset(0 0 100% 0);
         transition: 0.2s all ease-in-out;
+    }
+    .full-width-search-bar  div{
+        width: 100%;
     }
     .full-width-search-bar button {
         padding-left: var(--space-small);
@@ -660,6 +683,7 @@ ul.side-menu-list-depth-2 {
 }
 .depth-2 a{
     padding: 12px;
+    cursor: pointer;
     display: flex;
     margin-bottom: 10px;
     align-items: center;
@@ -764,7 +788,7 @@ ul.side-menu-list-depth-2 {
 @media only screen and (max-width: 1024px) {
     .side-menu-bar {
         position: absolute;
-        top: 66px;
+        top: 0;
         width: 100%;
         clip-path: inset(0 100% 0 0);
 		height: 100%;
@@ -794,9 +818,12 @@ ul.side-menu-list-depth-2 {
     .collapse-side-menu {
         clip-path: inset(0);
     }
+    .side-menu-bar .site-logo {
+        padding: 32px 0;
+    }
     .side-menu-bar > ul {
         width: 320px;
-		height: calc(100% - 65px);
+		height: 100% ;
 		overflow: auto;
         padding: 0 var(--space-small);
         background-color: var(--primary-color);
@@ -825,6 +852,21 @@ ul.side-menu-list-depth-2 {
         filter: brightness(0) saturate(100%) invert(9%) sepia(61%) saturate(7439%) hue-rotate(238deg) brightness(93%) contrast(103%);
     }
     .depth-2.active-depth-2 a::before {
+        filter: brightness(0) saturate(100%) invert(9%) sepia(61%) saturate(7439%) hue-rotate(238deg) brightness(93%) contrast(103%);
+    }
+    .hamburg-sidemenu .close-icon {
+        margin-right: 10px;
+        fill: var(--button-bg);
+    }
+    .show-menu,
+    .show-menu > a{
+        background-color: var(--primary-color);
+        color: var(--button-bg);
+    }
+    .show-menu >a img {
+        filter: brightness(0) saturate(100%) invert(9%) sepia(61%) saturate(7439%) hue-rotate(238deg) brightness(93%) contrast(103%);
+    }
+    .show-menu a::before {
         filter: brightness(0) saturate(100%) invert(9%) sepia(61%) saturate(7439%) hue-rotate(238deg) brightness(93%) contrast(103%);
     }
 }

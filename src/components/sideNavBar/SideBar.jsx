@@ -8,31 +8,42 @@ import { MenuTogglecontext } from '../../context/menuToggleContext'
 
 const SideBar = () => {
     const sideMenuArray = Object.entries(sideMenus);
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(true);
 
     const { toggleValue, setToggleValue } = useContext(MenuTogglecontext);
 
     useEffect(() => {
+        if(!isExpanded) {
+            setIsExpanded(true);
+            return ;
+        }
         setIsExpanded(false);
-        setToggleValue(false);
         return;
     },[toggleValue])
 
+    const handleToggle = () => {
+        if(!isExpanded) {
+            setIsExpanded(true);
+            return ;
+        }
+        setIsExpanded(false);
+    }
+
 	return (
         <section className={`side-menu-bar ${isExpanded ? "collapse-side-menu" : ""}`}>
-            <div className="site-logo">
-                <img src={sitelogo} alt="site Logo"></img>
-                <button className="hamburg-sidemenu" onClick={() => setIsExpanded(true)} >
-                    <MenuCloseIcon />
-                    <MenuOpenIcon />
-                </button>
-            </div>
             <ul className='side-menu-list-depth-1'>
+                <li className="site-logo">
+                    <a href="/"><img src={sitelogo} alt="site Logo"></img></a>
+                    <button className="hamburg-sidemenu" onClick={handleToggle} >
+                        <MenuCloseIcon />
+                        <MenuOpenIcon />
+                    </button>
+                </li>
             {sideMenuArray.map(([menuTitle, menuItems]) => (
                 <SubMenuOne key={menuTitle} title={menuTitle} subMenus={menuItems} />
              ))}
             </ul>
-            <a href="#" className="mobile-side-menubar-adjuster" ></a>
+            <a href="#" className="mobile-side-menubar-adjuster" onClick={handleToggle}></a>
         </section>
     )
 }
