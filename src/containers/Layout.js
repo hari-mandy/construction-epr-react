@@ -4,11 +4,13 @@ import { NotificationToggleContext } from '../context/menuToggleContext'
 import Header  from '../components/Header'
 import SideBar from '../components/sideNavBar/SideBar'
 import NotificationBar from '../components/header/NotificationBar'
+import returnAuthToken from '../app/auth'
 
 const Layout = ({children}) => {
     const [toggleValue, setToggleValue] = useState(false);
     const [notificationToggle, setNotificationToggle] = useState(false);
-
+    returnAuthToken();
+    
   return (
      <MenuTogglecontext.Provider value={{ toggleValue, setToggleValue }}>
         <NotificationToggleContext.Provider value={{ notificationToggle, setNotificationToggle}}>
