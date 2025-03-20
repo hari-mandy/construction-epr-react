@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import {Link } from 'react-router-dom'
 import InputText from '../inputs/InputText'
 import { useNavigate } from "react-router-dom"
@@ -11,6 +11,11 @@ const RegisterForm = () => {
     const [errorMessage, setErrorMessage] = useState ({ name: '', email: '', username: '', password: '' });
     const reqiredMes = "*This Field is required*";
     const navigate = useNavigate();
+    const oldEmailValue = useRef('');
+    const oldUserName = useRef('');
+
+    const handleEmailFocus = (event) => { oldEmailValue.current = event.target.value; };
+    const handleUserNameFocus = (event) => { oldUserName.current = event.target.value; };
     
 
     const handleEmpty = (e, type) => {
@@ -50,6 +55,12 @@ const RegisterForm = () => {
     
     const checkUnique = (e, type) => {
         const tagetvalue = e.target.value;
+        if (type === 'email' && oldEmailValue.current === tagetvalue) {
+            return ;
+        }
+        if (type === 'username' && oldUserName.current === tagetvalue) {
+            return ;
+        }
         if (tagetvalue === '') {
             setErrorMessage(prevState => ({...prevState, [type]: reqiredMes}));
             return;
@@ -79,8 +90,8 @@ const RegisterForm = () => {
             <h2 className="login-heading">Welcome To Dummie ERP !</h2>
             <form onSubmit = {handleSubmit} >
                 <InputText containerStyle="input-text-block" labelTitle="Name" inputType="text" placeholder="" onBlurFun={(e) => handleEmpty(e, 'name')} name="name" errorMessage={errorMessage.name} inputStyle="input-text" labelStyle="input-label"/>
-                <InputText containerStyle="input-text-block" labelTitle="User Name" inputType="text" placeholder="" onBlurFun={(e) => checkUnique(e, 'username')} name="username" errorMessage={errorMessage.username} inputStyle="input-text" labelStyle="input-label"/>
-                <InputText containerStyle="input-text-block" labelTitle="Email" inputType="email" placeholder="" name="email" onBlurFun={(e) => checkUnique(e, 'email')} errorMessage={errorMessage.email}inputStyle="input-text" labelStyle="input-label"/>
+                <InputText containerStyle="input-text-block" labelTitle="User Name" inputType="text" placeholder="" onBlurFun={(e) => checkUnique(e, 'username')} name="username" errorMessage={errorMessage.username} inputStyle="input-text" labelStyle="input-label" handleFocus={handleUserNameFocus}/>
+                <InputText containerStyle="input-text-block" labelTitle="Email" inputType="email" placeholder="" name="email" onBlurFun={(e) => checkUnique(e, 'email')} errorMessage={errorMessage.email}inputStyle="input-text" labelStyle="input-label" handleFocus={handleEmailFocus}/>
                 <InputText containerStyle="input-text-block password-icon" labelTitle="Password" inputType="password" placeholder="" name="password" errorMessage={errorMessage.password} inputStyle="input-text" labelStyle="input-label" onBlurFun={(e) => handleEmpty(e, 'password')}/>
                 <input type="submit" value="Register" className="login-btn register-btn" />
                 <p className='register-link para-small'>Already have an Account ?<Link to="/login"> Login</Link></p>
