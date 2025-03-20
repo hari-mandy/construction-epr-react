@@ -1,5 +1,3 @@
-import {handleEmail} from '../services/login-services'
-
 const returnAuthToken =  () => {
     const TOKEN = localStorage.getItem('userDetail');
     const PUBLIC_ROUTES = ["login", "forget-password", "register", "reset-password"];
