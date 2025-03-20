@@ -1,6 +1,5 @@
 import fetchUserData from '../hooks/fetchUserData'
 import bcrypt from 'bcryptjs'
-import Cookies from "js-cookie";
 
 const handleEmail =  (e, requireMes, validMes) => { //Function to verfiy it is not null.
     const tagetvalue = e;
@@ -47,5 +46,13 @@ const storeUserLocal = (data) => {
     localStorage.setItem('userDetail', JSON.stringify(data));
 }
 
+const checkLocalUser = () => {
+    const user = localStorage.getItem('userDetail');
+    if(user) {
+        return user;
+    }
+    return ;
+}
 
-export  { handleEmail, validateUser };
+
+export  { handleEmail, validateUser, checkLocalUser };

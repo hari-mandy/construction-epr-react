@@ -15,8 +15,7 @@ const LoginForm = () => {
     const handleFocus = (event) => {
         oldEmailValue.current = event.target.value; // Update on focus
     };
- 
-
+    
     useEffect(() => {
         const token = localStorage.getItem("authToken");
         if (token) {
