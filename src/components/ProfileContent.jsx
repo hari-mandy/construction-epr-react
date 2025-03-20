@@ -51,16 +51,18 @@ const ProfileContent = () => {
                 <h1 className="page-title">
                     My Profile
                 </h1>
-                <TabList className={`page-tab-list page-tab-container ${openMenu}`} onClick={showDropDown}>
-                    {pagelinks.map((pageLink, index) => (
-                        <Tab 
-                            className="para-small page-tab-list-item" key={index}
-                        >
-                            <span className="tab-title"><span className="tab-adjuster"></span>{pageLink.name}</span>
-                        </Tab>
-                    ))
-                    }
-                </TabList>
+                <div className="page-tab-container">
+                    <TabList className={`page-tab-list ${openMenu}`} onClick={showDropDown}>
+                        {pagelinks.map((pageLink, index) => (
+                            <Tab 
+                                className="para-small page-tab-list-item" key={index}
+                            >
+                                <span className="tab-title"><span className="tab-adjuster"></span>{pageLink.name}</span>
+                            </Tab>
+                        ))
+                        }
+                    </TabList>
+                </div>
             </div>
             
             <TabPanel>

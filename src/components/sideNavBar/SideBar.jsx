@@ -29,6 +29,14 @@ const SideBar = () => {
         setIsExpanded(false);
     }
 
+    useEffect(() => {
+        if (isExpanded) {
+            document.body.classList.add('scroll-lock');
+        } else {
+            document.body.classList.remove('scroll-lock');
+        }
+    }, [isExpanded]);
+
 	return (
         <section className={`side-menu-bar ${isExpanded ? "collapse-side-menu" : ""}`}>
             <ul className='side-menu-list-depth-1'>
