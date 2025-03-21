@@ -6,34 +6,16 @@ import Register from "./pages/Register";
 import ForgetPassword from "./pages/Forgetpassword";
 import ResetPassword from "./pages/ResetPassword";
 import InvalidToken from "./pages/InvalidToken";
-import returnAuthToken from "./app/auth";
 
 function App() {
-    const [tokenValid, setTokenValid] = useState(false);
-    const [loading, setLoading] = useState(true); // Prevents premature redirection
 
     useEffect(() => {
         document.title = "Dummie ERP";
     }, []);
 
-    useEffect(() => {
-        const checkToken = async () => {
-            try {
-                const token = await returnAuthToken(); // Await the token response
-                if (token === "success") {
-                    setTokenValid(true);
-                }
-            } catch (error) {
-                console.error("Error checking token:", error);
-            }
-            setLoading(false); // Ensure loading is completed
-        };
-        checkToken();
-    }, []);
-
     return (
         <Router>
-            <Routes>
+            <Routes>                
                 <Route path="/" element={<PartyMaster />} />
                 <Route path="/party-master" element={<PartyMaster />} />
                 <Route path="/invalid-token" element={<InvalidToken />} />
@@ -41,7 +23,6 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/forget-password" element={<ForgetPassword />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
-                {!tokenValid ? <Route path="*" element={<Login />} /> : ""}
             </Routes>
         </Router>
     );

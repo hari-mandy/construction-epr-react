@@ -8,7 +8,7 @@ const ProfileContent = () => {
             name: "Edit Profile",
         },
         {
-            name: "About Info ",
+            name: "About Info",
         },
         {
             name: "Timeline",

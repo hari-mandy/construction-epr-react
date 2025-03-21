@@ -1,16 +1,23 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { useNavigate } from "react-router-dom"
 import userprofile from '../../images/profile-default.jpg'
 
 const UserMenu = () => {
+    const [userDetail, setUserDetail] = useState({});
 
     const navigate = useNavigate();
-    const userDetail = JSON.parse(localStorage.getItem("userDetail"));
-    const blobUrl = userDetail.profile_img;
+    useEffect(() => {
+        const getUser = JSON.parse(localStorage.getItem("userDetail"));
+        if(!!getUser) {
+            setUserDetail(getUser);
+            return ;
+        }
+        navigate("/login")
+    },[])
 
     const clearLocalStorage = () => {
-            localStorage.clear();
-            navigate("/login");
+        localStorage.clear();
+        navigate("/login");
     }
 
   return (
