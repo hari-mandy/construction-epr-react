@@ -30,7 +30,7 @@ const sideMenus = {
         },
         {
             "name" : "Menu 4",
-            "path" : "/dashboard",
+            "path" : "/menu-four",
             "iconLink" : menu4,
             "subMenu" : [],
         },
