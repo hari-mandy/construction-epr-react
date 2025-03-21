@@ -23,10 +23,10 @@ const SideBar = () => {
 
     const handleToggle = () => {
         if(!isExpanded) {
-            setIsExpanded(true);
+            setToggleValue(true);
             return ;
         }
-        setIsExpanded(false);
+        setToggleValue(false);
     }
 
     useEffect(() => {

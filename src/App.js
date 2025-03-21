@@ -17,7 +17,7 @@ function App() {
     return (
         <Router>
             <Routes>                
-                <Route path="/" element={<PartyMaster />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route path="/party-master" element={<PartyMaster />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/invalid-token" element={<InvalidToken />} />

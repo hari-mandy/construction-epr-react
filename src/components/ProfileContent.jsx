@@ -44,8 +44,7 @@ const ProfileContent = () => {
     }
 
     
-  return (
-    <section className="main-content">
+    return (
         <Tabs>
             <div className="main-content-header">
                 <h1 className="page-title">
@@ -85,9 +84,7 @@ const ProfileContent = () => {
             </TabPanel>
 
         </Tabs>
-        
-    </section>
-  )
+    )
 }
 
 export default ProfileContent

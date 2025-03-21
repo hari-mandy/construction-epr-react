@@ -6,18 +6,16 @@ const DashboardLinks = () => {
     const dashboardItem = dashboardDetial[0][1];
     
   return (
-    <div className='main-content'>
-        <div className='home-grid'>
-        {dashboardItem.map((data, index) => {
-            return (
-                <a href={data.path} className='grid-item' key={index}>
-                    <img src={data.iconLink} alt={data.name} />
-                    <h2>{data.name}</h2>
-                </a>
-            )
-        })
-        }
-        </div>
+    <div className='home-grid'>
+    {dashboardItem.map((data, index) => {
+        return (
+            <a href={data.path} className='grid-item' key={index}>
+                <img src={data.iconLink} alt={data.name} />
+                <h2>{data.name}</h2>
+            </a>
+        )
+    })
+    }
     </div>
   )
 }
