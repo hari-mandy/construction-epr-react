@@ -1,27 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import RegistrationForm from './RegistrationForm';
+// import RegistrationForm from './RegistrationForm';
+import ProfileForm from '../components/forms/ProfileForm'
 
 const ProfileContent = () => {
     const pagelinks = [
-        {
-            name: "Edit Profile",
-        },
-        {
-            name: "About Info",
-        },
-        {
-            name: "Timeline",
-        },
-        {
-            name: "Party Master Tab one",
-        },
-        {
-            name: "Party Master Tab one",
-        },
-        {
-            name: "Party Master Tab One",
-        }
+        { name: "Edit Profile"},
+        { name: "About Info" },
+        { name: "Timeline"},
+        { name: "Party Master Tab one" },
+        { name: "Party Master Tab one" },
+        { name: "Party Master Tab One"}
     ];
     const [openMenu, setOpenMenu] = useState("")
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -65,22 +54,22 @@ const ProfileContent = () => {
             </div>
             
             <TabPanel>
-                <RegistrationForm />
+                <ProfileForm />
             </TabPanel>
             <TabPanel>
-                <h2>Any content 2</h2>
+                <h2>Dummy content for tab 2</h2>
             </TabPanel>
             <TabPanel>
-                <h2>Any content 3</h2>
+                <h2>Dummy content for tab 3</h2>
             </TabPanel>
             <TabPanel>
-                <h2>Any content 4</h2>
+                <h2>Dummy content for tab 4</h2>
             </TabPanel>
             <TabPanel>
-                <h2>Any content 4</h2>
+                <h2>Dummy content for tab 5</h2>
             </TabPanel>
             <TabPanel>
-                <h2>Any content 4</h2>
+                <h2>Dummy content for tab 6</h2>
             </TabPanel>
 
         </Tabs>

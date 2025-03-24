@@ -8,10 +8,6 @@ const Layout = ({ children }) => {
     const [toggleValue, setToggleValue] = useState(false);
     const [notificationToggle, setNotificationToggle] = useState(false);
 
-    useEffect(() => {
-        console.log("Toggle Value Changed:", toggleValue);
-    }, [toggleValue]);  // This will run every time toggleValue changes
-
     return (
         <MenuTogglecontext.Provider value={{ toggleValue, setToggleValue }}>
             <NotificationToggleContext.Provider value={{ notificationToggle, setNotificationToggle }}>

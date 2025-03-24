@@ -54,5 +54,20 @@ const checkLocalUser = () => {
     return ;
 }
 
+const handleUnique= async (type, value) => {
+    if(type === 'name') {
+        return ;
+    }
+    try {
+        const response = await fetchUserData(`checkunique?${type}=`, value);
+        if (response.isUnique) {
+            return ;
+        }
+        return "*Is already in use*";
+    } catch (error) {
+        alert('Error checking value');
+    }
+}
 
-export  { handleEmail, validateUser, checkLocalUser };
+
+export  { handleEmail, validateUser, checkLocalUser, handleUnique };

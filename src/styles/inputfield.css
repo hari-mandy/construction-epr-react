@@ -183,6 +183,15 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 .form-column .primary-btn {
     width: 50%;
 }
+.profile-form {
+    max-width: 692px;
+}
+.primary-btn {
+    text-align: center;
+    padding: 10px 49px;
+    font-family: var(--font-family);
+    width: auto;
+}
 .submit-btn-container {
     display: flex;
     justify-content: flex-end;
@@ -197,6 +206,13 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     color: var(--success-mes);
     display: block;
     text-align: center;
+}
+.password-field span img {
+    display: none;
+}
+.button-end-container {
+    display: flex;
+    justify-content: flex-end;
 }
 
 @media only screen and (max-width: 768px) {
