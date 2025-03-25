@@ -47,7 +47,7 @@ const ProfileForm = () => {
                 setErrMessage(prevState => ({...prevState, profile_img: '*file size should be less than 1MB*'}));
                 return;
             }
-            setUserDetail(prevState => ({...prevState, [type]: base64String}));
+            setUserDetail(prevState => ({...prevState, profile_img: base64String}));
             return ;
         }
         setUserDetail(prevState => ({...prevState,[type]: e.target.value}));
@@ -78,6 +78,7 @@ const ProfileForm = () => {
             }
             const profile = {...JSON.parse(localStorage.getItem('userDetail')), ...userDetail };
             localStorage.setItem('userDetail', JSON.stringify(profile));
+            window.location.reload();
             return ;
         }
         return ;
