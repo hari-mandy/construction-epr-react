@@ -3,6 +3,8 @@ import InputFile from '../inputs/InputFile'
 import InputText from '../inputs/InputText'
 import { userData } from '../../data/user-data'
 import { handleUnique } from '../../services/login-services'
+import fetchPostData from '../../hooks/fetchPostData'
+import { convertToBase64 } from '../../services/update-services'
 
 const ProfileForm = () => {
 
@@ -23,18 +25,30 @@ const ProfileForm = () => {
         name: '',
         email: '',
         username: '',
+        profile_img:'',
     })
     const oldValue = useRef('');
+    const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
+
 
     useEffect(() => {
-        userDetail.dateofbirth = new Date(userDetail.dateofbirth).toISOString().split("T")[0];
+        const formattedDate = new Date(userDetail.dateofbirth);
+        if (!isNaN(formattedDate)) {
+            userDetail.dateofbirth = formattedDate.toISOString().split("T")[0];
+        }
     },[userDetail.dateofbirth])
 
     const handleFocus = (event) => { oldValue.current = event.target.value };
 
-    const handleChange = (e, type) => {
+    const handleChange = async (e, type) => {
         if( type === 'profile_img') {
-            setUserDetail(prevState => ({...prevState, [type]: URL.createObjectURL(e.target.files[0])}));
+            const file = e.target.files[0];
+            const base64String = await convertToBase64(file);
+            if (file.size > MAX_FILE_SIZE) {
+                setErrMessage(prevState => ({...prevState, profile_img: '*file size should be less than 1MB*'}));
+                return;
+            }
+            setUserDetail(prevState => ({...prevState, [type]: base64String}));
             return ;
         }
         setUserDetail(prevState => ({...prevState,[type]: e.target.value}));
@@ -56,9 +70,16 @@ const ProfileForm = () => {
         setErrMessage(prevState => ({...prevState, [type]: ''}));
     }
 
-    const handleSubmit= (e) => {
-        e.prevent.default();
-        
+    const handleSubmit= async (e) => {
+        e.preventDefault();
+        if(errMessage.name === '' || errMessage.email === '' || errMessage.username === '') {
+            const result = await fetchPostData('updateuser', userDetail);
+            if(result !== 'success') {
+                alert('Details Not updated !')
+            }
+            return ;
+        }
+        return ;
     }
 
     return (
@@ -66,7 +87,7 @@ const ProfileForm = () => {
             <form className="profile-form" onSubmit={handleSubmit}>
                 <div className="registration-form-container">
                     <div className="form-column">
-                        <InputFile containerStyle="field-profile" inputType="file" name="profile_img" acceptType="" onChange={(e) => handleChange(e,'profile_img')} imgSrc={userDetail.profile_img}/>
+                        <InputFile containerStyle="field-profile" inputType="file" name="profile_img" acceptType="" onChange={(e) => handleChange(e,'profile_img')} imgSrc={userDetail.profile_img} errorMessage={errMessage.profile_img}/>
                     </div>
                     <div className="form-column">
                         <InputText labelTitle="First Name" containerStyle="name-field" inputType="text" name="name" value={userDetail.name} onChange={(e) => handleChange(e, 'name')} errorMessage={errMessage.name} onBlurFun={(e) => handleBlur('name', e)} errorMessageAbove="true"/>

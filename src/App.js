@@ -16,7 +16,7 @@ function App() {
 
     return (
         <Router>
-            <Routes>                
+            <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/party-master" element={<PartyMaster />} />
                 <Route path="/dashboard" element={<Dashboard />} />
