@@ -76,6 +76,8 @@ const ProfileForm = () => {
             if(result !== 'success') {
                 alert('Details Not updated !')
             }
+            const profile = {...JSON.parse(localStorage.getItem('userDetail')), ...userDetail };
+            localStorage.setItem('userDetail', JSON.stringify(profile));
             return ;
         }
         return ;
