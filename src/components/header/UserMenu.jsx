@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate } from "react-router-dom"
 import userprofile from '../../images/profile-default.jpg'
+import { userData } from '../../data/user-data'
 
 const UserMenu = () => {
     const [userDetail, setUserDetail] = useState({});
 
     const navigate = useNavigate();
     useEffect(() => {
-        const getUser = JSON.parse(localStorage.getItem("userDetail"));
+        const getUser = userData;
         if(!!getUser) {
             setUserDetail(getUser);
             return ;
@@ -22,12 +23,12 @@ const UserMenu = () => {
 
   return (
     <div className="user-tab">
-        <img className="user-avatar" src={userprofile}alt="User profile"></img>
+        <img className="user-avatar" src={userDetail.profile_img ? userDetail.profile_img : userprofile} alt="User profile"></img>
         <h4 className="user-name">{userDetail.username}</h4>
         <span className="dropdown-icon"></span>
         <ul className="user-info-list">
             <li className="user-detail">
-                <img className="user-avatar" src={userprofile} alt="user"></img>
+                <img className="user-avatar" src={ userDetail.profile_img ? userDetail.profile_img : userprofile } alt="user"></img>
                 <div>
                     <h6>{userDetail.username}</h6>
                     <a className="para-small user-email" href={`mailto:${userDetail.email}`}>{userDetail.email}</a>
