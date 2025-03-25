@@ -963,7 +963,6 @@ ul.side-menu-list-depth-2 {
         cursor: pointer;
         padding: 9px 29px 9px 9px;
         border-right: none;
-        border-top: 1px solid var(--table-border);
         min-width: 150px;
     }
     .tab-adjuster {
@@ -1045,15 +1044,18 @@ ul.side-menu-list-depth-2 {
         min-width: auto;
     }
     .page-tab-list::after {
-        position: relative;
-        top: 0px;
+        position: absolute;
+        top: 7.5px;
+        right: 0;
         display: block;
         width: 24px;
         height: 24px;
         background-image: url('../images/page-tab-dropdown.svg');
         content: '';
     }
-
+    .page-tab-list li {
+        text-align: center;
+    }
     .page-tab-list-item.react-tabs__tab--selected{
         text-align: center;
     }
