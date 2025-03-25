@@ -19,7 +19,7 @@ const LoginForm = () => {
     useEffect(() => {
         const token = localStorage.getItem("authToken");
         if (token) {
-            navigate("/party-master");
+            navigate("/");
         }
     }, []);
     
@@ -31,7 +31,7 @@ const LoginForm = () => {
         const EnteredPass = e.target.password.value;
         const validUserReturn = await validateUser(e, userdata, EnteredPass, remMe, errorMessage.email);
         if (validUserReturn === 'success') {
-            navigate("/party-master");
+            navigate("/");
             return ;
         }
         setErrorMessage(prevState => ({ ...prevState, password: validUserReturn }));

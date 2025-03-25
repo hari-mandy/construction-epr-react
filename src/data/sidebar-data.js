@@ -23,9 +23,9 @@ const sideMenus = {
             "subMenu" : [],
         },
         {
-            "name" : "Party Master",
-            "path" : "/party-master",
-            "iconLink" : Iconebox,
+            "name" : "Profile",
+            "path" : "/profile",
+            "iconLink" : menu5,
             "subMenu" : [],
         },
         {
@@ -36,7 +36,7 @@ const sideMenus = {
         },
         {
             "name" : "Menu 5",
-            "iconLink" : menu5,
+            "iconLink" : menu7,
             "subMenu": [
                 {
                     name : "SubMenu 1",
