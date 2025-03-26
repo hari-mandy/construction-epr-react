@@ -16,13 +16,6 @@ const LoginForm = () => {
         oldEmailValue.current = event.target.value; // Update on focus
     };
     
-    useEffect(() => {
-        const token = localStorage.getItem("authToken");
-        if (token) {
-            navigate("/");
-        }
-    }, []);
-    
     const onUserPassword = (e) => {
         setErrorMessage(prevState => ({ ...prevState, password: '' }));
     }

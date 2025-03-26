@@ -11,7 +11,7 @@ const Login = () => {
     useEffect(() => {
         const validUser = checkLocalUser();
         if (validUser) {
-            navigate("/party-master");
+            navigate("/dashboard");
             return;
         }
         return ;
