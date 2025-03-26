@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import ForgetPassword from "./pages/Forgetpassword";
 import ResetPassword from "./pages/ResetPassword";
 import InvalidToken from "./pages/InvalidToken";
+import Matters from "./pages/Matters";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/profile" element={<PartyMaster />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/invalid-token" element={<InvalidToken />} />
+                <Route path="/matters" element={<Matters />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/forget-password" element={<ForgetPassword />} />
