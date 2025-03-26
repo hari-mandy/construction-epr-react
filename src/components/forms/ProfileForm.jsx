@@ -30,13 +30,6 @@ const ProfileForm = () => {
     const oldValue = useRef('');
     const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
 
-    useEffect(() => {
-        const formattedDate = new Date(userDetail.dateofbirth);
-        if (!isNaN(formattedDate)) {
-            userDetail.dateofbirth = formattedDate.toISOString().split("T")[0];
-        }
-    },[userDetail.dateofbirth])
-
     const handleFocus = (event) => { oldValue.current = event.target.value };
 
     const handleChange = async (e, type) => {
