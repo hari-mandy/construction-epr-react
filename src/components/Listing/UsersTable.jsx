@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import fetchUserData from '../../hooks/fetchUserData'
+import React, { useContext, useEffect } from 'react'
+import {filterUsersContext} from '../../context/filterUsersContext'
+import fetchUserData from '../../hooks/fetchUserData';
 
 const UsersTable = () => {
-    const [users, setUsers] = useState([]);
+    const { usersList, setUsersList } = useContext(filterUsersContext);
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const users = await fetchUserData('getalluser','');
-            setUsers(users)
+            const users = await fetchUserData('getalluser?like','');
+            setUsersList(users)
         };
         fetchUsers();
     }, []);
-
+    
   return (
     <table className="user-table">
         <tbody>
@@ -24,8 +25,8 @@ const UsersTable = () => {
                 <th>City</th>
                 <th>Country</th>
             </tr>
-            {users.map((user, index) => (
-                <tr className='table-data'>
+            {usersList.map((user, index) => (
+                <tr className='table-data' key={index}>
                     <td><span className="table-checkbox"><input type="checkbox" /><span className="table-checkbox-adjuster"></span></span></td>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
