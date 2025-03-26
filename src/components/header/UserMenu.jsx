@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate } from "react-router-dom"
 import userprofile from '../../images/profile-default.jpg'
-import { userData } from '../../data/user-data'
 
 const UserMenu = () => {
     const [userDetail, setUserDetail] = useState({});
 
     const navigate = useNavigate();
     useEffect(() => {
-        const getUser = userData;
+        const getUser = JSON.parse(localStorage.getItem("userDetail"));
         if(!!getUser) {
             setUserDetail(getUser);
             return ;

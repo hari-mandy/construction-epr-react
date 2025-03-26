@@ -24,7 +24,7 @@ const LoginForm = () => {
         const EnteredPass = e.target.password.value;
         const validUserReturn = await validateUser(e, userdata, EnteredPass, remMe, errorMessage.email);
         if (validUserReturn === 'success') {
-            navigate("/");
+            navigate("/dashboard");
             return ;
         }
         setErrorMessage(prevState => ({ ...prevState, password: validUserReturn }));
