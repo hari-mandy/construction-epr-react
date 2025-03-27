@@ -7,7 +7,7 @@ import fetchPostData from '../../hooks/fetchPostData'
 import { convertToBase64 } from '../../services/update-services'
 
 const ProfileForm = () => {
-
+    
     const [userDetail, setUserDetail] = useState({
         id: userData.id,
         profile_img: userData.profile_img,

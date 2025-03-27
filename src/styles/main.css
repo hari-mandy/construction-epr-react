@@ -1165,6 +1165,10 @@ ul.side-menu-list-depth-2 {
     color: var(--table-pagination);
     box-shadow: none;
 }
+.table-dropdown select:focus,
+.table-dropdown select:focus-visible {
+    border: none;
+}
 .table-dropdown {
     display: flex;
     position: relative;

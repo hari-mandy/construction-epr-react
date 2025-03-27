@@ -1,6 +1,7 @@
 import React,{ useContext } from 'react'
 import SearchFilter from './SearchFilter'
 import { filterUsersContext } from '../../context/filterUsersContext';
+import DropdownFilter from './DropdownFilter'
 
 const MattersFilterBar = () => {
     const { usersList, setUsersList } = useContext(filterUsersContext);
@@ -10,6 +11,7 @@ const MattersFilterBar = () => {
         <h4>CONTACT Info ({usersList.length})</h4>
         <div className="table-filters">
             <SearchFilter />
+            <DropdownFilter />
         </div>
     </div>
   )
