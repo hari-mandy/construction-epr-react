@@ -1321,6 +1321,9 @@ table button {
     cursor: pointer;
     transition: 0.2s all ease-in-out;
 }
+.sort-icon {
+    cursor: pointer;
+}
 table .sort-icon::after {
     position: relative;
     top: 2px;

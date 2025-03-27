@@ -13,7 +13,7 @@ const SearchFilter = () => {
     };
 
   return (
-    <InputText type="search" placeholder="Search by Name Or Mobile No" containerStyle="table-search" inputStyle="table-search-field" searchButtonIcon={<SearchIcon />} searchButtonStyle="table-search-button" onChange={fetchUsers}/>
+    <InputText inputType="search" placeholder="Search by Name Or Mobile No" containerStyle="table-search" inputStyle="table-search-field" searchButtonIcon={<SearchIcon />} searchButtonStyle="table-search-button" onChange={fetchUsers}/>
   )
 }
 

@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {filterUsersContext} from '../../context/filterUsersContext'
 import fetchUserData from '../../hooks/fetchUserData';
 
 const UsersTable = () => {
     const { usersList, setUsersList } = useContext(filterUsersContext);
+    const [sortAscending, setSortAscending] = useState(true);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -12,6 +13,19 @@ const UsersTable = () => {
         };
         fetchUsers();
     }, []);
+
+    // Sorting function
+    const sortList = (type) => {
+        const sorted = [...usersList].sort((a, b) => {
+        const valueA = a[type] ? a[type].toString() : '';
+        const valueB = b[type] ? b[type].toString() : '';
+        return sortAscending ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+        });
+        
+        setUsersList(sorted);
+        setSortAscending(!sortAscending); // Toggle sorting direction
+    };
+
     
   return (
     <table className="user-table">
@@ -19,9 +33,9 @@ const UsersTable = () => {
             <tr className="table-heading">
                 <th><span className="table-checkbox"><input type="checkbox" /><span className="table-checkbox-adjuster"></span></span></th>
                 <th>Name</th>
-                <th className="sort-icon">E-Mail</th>
+                <th className="sort-icon" onClick={() => sortList('email')}>E-Mail</th>
                 <th>User Name</th>
-                <th className="sort-icon">Postal Code</th>
+                <th className="sort-icon" onClick={() => sortList('postal_code')}>Postal Code</th>
                 <th>City</th>
                 <th>Country</th>
             </tr>
