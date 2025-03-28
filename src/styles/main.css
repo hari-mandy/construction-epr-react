@@ -212,8 +212,11 @@ h6 {
     font-size: var(--heading-h6) ;
     line-height: 1.25 ;
 }
-.next-icon {
+.button-container .next-icon {
     padding: 14px 12px 14px 18px;
+}
+.button-container .prev-icon {
+    padding: 11px 18px 11px 12px;
 }
 .next-icon::after {
     display: block;

@@ -8,7 +8,7 @@ const MattersFilterBar = () => {
     
   return (
     <div className="table-filter-bar-wrapper">
-        <h4>CONTACT Info ({usersList.length})</h4>
+        <h4>CONTACT Info ({usersList.totalItems})</h4>
         <div className="table-filters">
             <SearchFilter />
             <DropdownFilter />
