@@ -15,7 +15,7 @@ const DropdownFilter = () => {
     }, [])
 
     const handlechange = async (e) => {
-        const users = await fetchUserData('getusercity?like=',e.target.value);
+        const users = await fetchUserData('users?city=',e.target.value);
         setUsersList(users);
     }
 

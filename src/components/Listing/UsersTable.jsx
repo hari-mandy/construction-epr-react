@@ -8,7 +8,7 @@ const UsersTable = () => {
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const users = await fetchUserData('users?page=2','');
+            const users = await fetchUserData('users','');
             setUsersList(users);
         };
         fetchUsers();

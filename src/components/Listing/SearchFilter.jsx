@@ -8,7 +8,7 @@ const SearchFilter = () => {
     const { usersList, setUsersList } = useContext(filterUsersContext);
 
     const fetchUsers = async (e) => {
-        const users = await fetchUserData('getalluser?like=',e.target.value);
+        const users = await fetchUserData('users?search=',e.target.value);
         setUsersList(users);
     };
 
