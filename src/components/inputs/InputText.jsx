@@ -19,7 +19,7 @@ const InputText = ({labelTitle, containerStyle, inputType, placeholder, onBlurFu
         {searchButtonIcon ? <button className={searchButtonStyle} >{searchButtonIcon}</button> : ''}
         <input type={inputType === 'password' ? (showPassword) : inputType} className={inputStyle} name={name} placeholder={placeholder} onBlur={onBlurFun} onFocus={handleFocus} onChange={onChange} value={value} />
         {inputType === 'password' ? <span className='password-visibe' onClick={changePasswordType}><img src={passwordVisibleIcon} alt="visible icon" /></span> : ''}
-        {errorMessage && !errorMessageAbove ? <span className="error-mes">{errorMessage}</span> : ''}
+        {!errorMessageAbove ? <span className="error-mes">{errorMessage}</span> : ''}
     </div>
   )
 }
