@@ -10,3 +10,25 @@ A Dashboard for the ERP software is developed using React JS for Style css is us
 -   Listed the user table with Search & dropdown Filters.
 -   Pagination added for the list shown.
 -   Submenu support in sidebar.
+-   Swiper was developed using swiper js.
+
+## Core Libraries Used
+
+-   react
+-   react-dom
+-   react-scripts
+-   react-router-dom
+-   bcryptjs
+-   react-tabs
+-   swiper
+
+## Installation
+
+This a Fullstack application but this Project has only fontend parts. to experience backend functionalites visit [construction-erp-react-backend](https://github.com/hari-mandy/construction-erp-react-backend).
+
+Go to project directory and run (make sure you have node installed first).
+
+```bash
+  npm install
+  npm start
+```
