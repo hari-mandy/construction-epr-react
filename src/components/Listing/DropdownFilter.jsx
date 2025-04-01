@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 import fetchUserData from '../../hooks/fetchUserData'
-import { filterUsersContext } from '../../context/filterUsersContext'
+import { filterUrlContext } from '../../context/filterUrlContext'
 
 const DropdownFilter = () => {
-    const { usersList, setUsersList } = useContext(filterUsersContext);
+    const { filterUrl, setFilterUrl } = useContext(filterUrlContext);
     const [citys, setCitys] = useState([])
 
     useEffect(() => {
@@ -15,8 +15,8 @@ const DropdownFilter = () => {
     }, [])
 
     const handlechange = async (e) => {
-        const users = await fetchUserData('users?city=',e.target.value);
-        setUsersList(users);
+        const searchString = e.target.value;
+        setFilterUrl(prevState => ({...prevState,city : searchString}))
     }
 
   return (

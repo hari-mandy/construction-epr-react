@@ -11,12 +11,12 @@ const MattersContainer = () => {
     const [usersList, setUsersList] = useState({});
     const [filterUrl, setFilterUrl] = useState({
         search : '',
-        dropdown : ''
+        city : ''
     });
 
     useEffect(() => {
         async function fetchUserList() {
-            const makeList = await fetchUserData(`users?search=${filterUrl.search}`,'')
+            const makeList = await fetchUserData(`users?city=${filterUrl.city}&search=${filterUrl.search}`,'')
             setUsersList(makeList);
         }
         fetchUserList();
@@ -26,13 +26,13 @@ const MattersContainer = () => {
 
     const handleNextNav = async () => {
         const prevLink = nextNavigation(usersList.currentPage);
-        const nextUsers = await fetchUserData(`users?search=${filterUrl.search}&page=${prevLink}`,'')
+        const nextUsers = await fetchUserData(`users?city=${filterUrl.city}&search=${filterUrl.search}&page=${prevLink}`,'')
         setUsersList(nextUsers);
     }
 
     const handlePrevNav = async () => {
         const prevLink = prevNavigation(usersList.currentPage);
-        const nextUsers = await fetchUserData(`users?search=${filterUrl.search}&page=${prevLink}`,'')
+        const nextUsers = await fetchUserData(`users?city=${filterUrl.city}&search=${filterUrl.search}&page=${prevLink}`,'')
         setUsersList(nextUsers);
     }
 

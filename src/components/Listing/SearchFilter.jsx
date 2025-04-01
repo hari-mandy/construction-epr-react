@@ -1,12 +1,9 @@
 import React, {useContext, useEffect} from 'react'
 import InputText from '../inputs/InputText'
 import SearchIcon from '../icons/SearchIcon'
-import fetchUserData from '../../hooks/fetchUserData';
 import { filterUrlContext } from '../../context/filterUrlContext'
-import { filterUsersContext } from '../../context/filterUsersContext';
 
 const SearchFilter = () => {
-    const { usersList, setUsersList } = useContext(filterUsersContext);
     const { filterUrl, setFilterUrl } = useContext(filterUrlContext);
 
     const fetchUsers = async (e) => {
