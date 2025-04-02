@@ -30,9 +30,9 @@ const ProfileForm = () => {
     const oldValue = useRef('');
     const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
 
-    const handleFocus = (event) => { oldValue.current = event.target.value };
+    const handleFocus = (event) => { oldValue.current = event.target.value }; //function to compare old & new value.
 
-    const handleChange = async (e, type) => {
+    const handleChange = async (e, type) => { //function to handle the values.
         if( type === 'profile_img') {
             const file = e.target.files[0];
             const base64String = await convertToBase64(file);
@@ -46,7 +46,7 @@ const ProfileForm = () => {
         setUserDetail(prevState => ({...prevState,[type]: e.target.value}));
     }
 
-    const handleBlur = async (type, value) => {
+    const handleBlur = async (type, value) => { //function to check the value is empty or unique.
         const targetValue = value.target.value;
         if(targetValue === '') {
             setErrMessage(prevState => ({...prevState, [type]: '*This field is required*'}));

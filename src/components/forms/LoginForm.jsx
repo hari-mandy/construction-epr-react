@@ -12,15 +12,15 @@ const LoginForm = () => {
     const navigate = useNavigate();
     const oldEmailValue = useRef('');
 
-    const handleFocus = (event) => {
-        oldEmailValue.current = event.target.value; // Update on focus
+    const handleFocus = (event) => { //function to compare old & current value
+        oldEmailValue.current = event.target.value;
     };
     
-    const onUserPassword = (e) => {
+    const onUserPassword = (e) => { //function to update the password error message
         setErrorMessage(prevState => ({ ...prevState, password: '' }));
     }
 
-    const validUser = async (e) => {
+    const validUser = async (e) => { //function for onSubmit to verify user.
         const EnteredPass = e.target.password.value;
         const validUserReturn = await validateUser(e, userdata, EnteredPass, remMe, errorMessage.email);
         if (validUserReturn === 'success') {
@@ -30,6 +30,7 @@ const LoginForm = () => {
         setErrorMessage(prevState => ({ ...prevState, password: validUserReturn }));
     }
 
+    //function to handle unique values from db.
     const handleunique = async (e, requireMes = '*This Field is required*', checkMailMes = '*Check the Mail Entered !') => {
         if(oldEmailValue.current !== e.target.value || oldEmailValue !== '') {
             const returnValue = await handleEmail(e.target.value, requireMes, checkMailMes );
