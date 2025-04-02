@@ -4,8 +4,8 @@ import fetchUserData from '../../hooks/fetchUserData';
 
 const UsersTable = () => {
     const { usersList, setUsersList } = useContext(filterUsersContext);
-    const [checkedRows, setCheckedRows] = useState([]);  // Track the checked state of each row
-    const [headChecked, setHeadChecked] = useState(false);  // Track header checkbox state
+    const [checkedRows, setCheckedRows] = useState([]);
+    const [headChecked, setHeadChecked] = useState(false);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -15,7 +15,7 @@ const UsersTable = () => {
         fetchUsers();
     }, []);
 
-        // Update header checkbox state based on all checked rows
+    // Update header checkbox state based on all checked rows
     useEffect(() => {
         if (usersList && usersList.items) {
             const allChecked = usersList.items.length > 0 && usersList.items.every((_, index) => checkedRows[index] === true);

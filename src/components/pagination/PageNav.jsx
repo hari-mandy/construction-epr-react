@@ -11,14 +11,14 @@ const PageNav = ({rowsPerPage, totalNumberOfPosts, offsetPosts, currentPagenumbe
             } else {
                 setPrevDisable(false);
             }
-            if (totalPages == currentPagenumber) {
+            if (totalPages == currentPagenumber || !totalPages) {
                 setNextDisable(true);
             } else {
                 setNextDisable(false);
             }
         };
         checkPrevButtonState(); // Call the function to check the button state
-    }, [currentPagenumber]);
+    }, [currentPagenumber, totalPages]);
     
   return (
     <div className="pagination-content">
