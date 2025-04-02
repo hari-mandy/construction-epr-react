@@ -11,7 +11,7 @@ const PageNav = ({rowsPerPage, totalNumberOfPosts, offsetPosts, currentPagenumbe
             } else {
                 setPrevDisable(false);
             }
-            if (totalPages == currentPagenumber || totalPages === 0) {
+            if (totalPages == currentPagenumber) {
                 setNextDisable(true);
             } else {
                 setNextDisable(false);
