@@ -55,12 +55,8 @@ const RegisterForm = () => {
     
     const checkUnique = (e, type) => {
         const tagetvalue = e.target.value;
-        if (type === 'email' && oldEmailValue.current === tagetvalue) {
-            return ;
-        }
-        if (type === 'username' && oldUserName.current === tagetvalue) {
-            return ;
-        }
+        if (type === 'email' && oldEmailValue.current === tagetvalue) { return ; }
+        if (type === 'username' && oldUserName.current === tagetvalue) { return ; }
         if (tagetvalue === '') {
             setErrorMessage(prevState => ({...prevState, [type]: reqiredMes}));
             return;
@@ -70,18 +66,21 @@ const RegisterForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if(formData.name === '') { setErrorMessage(prevState => ({...prevState, name: "*this field is required*" })); return '' }
-        if(formData.email === '') { setErrorMessage(prevState => ({...prevState, email: "*this field is required*" })); return '' }
-        if(formData.username === '') { setErrorMessage(prevState => ({...prevState, username: "*this field is required*" })); return '' }
-        if(formData.password === '') { setErrorMessage(prevState => ({...prevState, password: "*this field is required*" })); return '' }
-        const hashedPassword = await bcrypt.hash(formData.password, 10);
-        const updatedFormData = { ...formData, password: hashedPassword };
-        const result = await fetchPostData('register' , updatedFormData);
-        if (result === 'success') {
-            navigate("/login");
-            return ;
+        if(formData.name === '') { setErrorMessage(prevState => ({...prevState, name: reqiredMes })); return '' }
+        if(formData.username === '') { setErrorMessage(prevState => ({...prevState, username: reqiredMes })); return '' }
+        if(formData.email === '') { setErrorMessage(prevState => ({...prevState, email: reqiredMes })); return '' }
+        if(formData.password === '') { setErrorMessage(prevState => ({...prevState, password: reqiredMes })); return '' }
+        if (formData.name === '' && formData.username === '' && formData.email === '' && formData.password === '') {
+            const hashedPassword = await bcrypt.hash(formData.password, 10);
+            const updatedFormData = { ...formData, password: hashedPassword };
+            const result = await fetchPostData('register' , updatedFormData);
+            if (result === 'success') {
+                navigate("/login");
+                return ;
+            }
+            alert("Your Registration Failed !")
         }
-        alert("Your Registration Failed !")
+        return ;
     }
     
 
