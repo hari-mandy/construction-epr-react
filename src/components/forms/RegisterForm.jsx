@@ -70,7 +70,7 @@ const RegisterForm = () => {
         if(formData.username === '') { setErrorMessage(prevState => ({...prevState, username: reqiredMes })); return '' }
         if(formData.email === '') { setErrorMessage(prevState => ({...prevState, email: reqiredMes })); return '' }
         if(formData.password === '') { setErrorMessage(prevState => ({...prevState, password: reqiredMes })); return '' }
-        if (formData.name === '' && formData.username === '' && formData.email === '' && formData.password === '') {
+        if (errorMessage.name === '' && errorMessage.username === '' && errorMessage.email === '' && errorMessage.password === '') {
             const hashedPassword = await bcrypt.hash(formData.password, 10);
             const updatedFormData = { ...formData, password: hashedPassword };
             const result = await fetchPostData('register' , updatedFormData);
