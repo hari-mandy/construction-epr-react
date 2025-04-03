@@ -8,11 +8,11 @@ const DropdownFilter = () => {
 
     useEffect(() => {
         const fetchCitys = async () => {
-            const citys = await fetchUserData('getcitys','');
+            const citys = await fetchUserData(`getcitys?search=${filterUrl.search}`,'');
             setCitys(citys)
         }
         fetchCitys();
-    }, [])
+    }, [filterUrl.search])
 
     const handlechange = async (e) => {
         const searchString = e.target.value;
