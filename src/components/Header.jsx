@@ -62,7 +62,7 @@ const Header = () => {
                         <button className="search-icon">
                             <MobileSearchIcon />
                         </button>
-                        <InputText inputType="search" inputStyle="input-search" placeholder="Search..." />
+                        <InputText inputType="search" inputStyle="input-search" placeholder="Search..." errorMessageAbove="false"/>
                     </div>
                 </div>
             </div>

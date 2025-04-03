@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {filterUsersContext} from '../../context/filterUsersContext'
-import fetchUserData from '../../hooks/fetchUserData';
+import fetchUserData from '../../hooks/fetchUserData'
+import TableRowSkeleton from '../skeleton/TableRowSkeleton'
 
 const UsersTable = () => {
     const { usersList, setUsersList } = useContext(filterUsersContext);
     const [checkedRows, setCheckedRows] = useState([]);
-    const [headChecked, setHeadChecked] = useState(false);
+    const [headChecked, setHeadChecked] = useState(false);  
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -14,6 +16,16 @@ const UsersTable = () => {
         };
         fetchUsers();
     }, []);
+
+    useEffect(() => {
+        const loadData = () => {
+            setIsLoaded(false);
+            setTimeout(() => {
+              setIsLoaded(true);
+            }, 1000);
+        };
+        loadData();
+    }, [usersList])
 
     // Update header checkbox state based on all checked rows
     useEffect(() => {
@@ -50,21 +62,24 @@ const UsersTable = () => {
                         <th>City</th>
                         <th>Country</th>
                     </tr>
-                    {usersList && usersList.items ? (
-                        usersList.items.map((user, index) => (
-                            <tr className="table-data" key={index}>
-                                <td><span className="table-checkbox"><input type="checkbox" checked={checkedRows[index] || false}  onChange={() => handleRowCheck(index)} /> <span className="table-checkbox-adjuster"></span></span></td>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>{user.username}</td>
-                                <td>{user.postal_code}</td>
-                                <td>{user.city}</td>
-                                <td>{user.country}</td>
-                            </tr>
-                        ))
-                    ) : (
-                        <tr><td colSpan="7">Loading...</td></tr>
-                    )}
+                    {
+                        isLoaded ? 
+                            usersList && usersList.items ? (
+                                usersList.items.map((user, index) => (
+                                    <tr className="table-data" key={index}>
+                                        <td><span className="table-checkbox"><input type="checkbox" checked={checkedRows[index] || false}  onChange={() => handleRowCheck(index)} /> <span className="table-checkbox-adjuster"></span></span></td>
+                                        <td>{user.name}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.username}</td>
+                                        <td>{user.postal_code}</td>
+                                        <td>{user.city}</td>
+                                        <td>{user.country}</td>
+                                    </tr>
+                                ))
+                            ) : (
+                                ''
+                            ) : <TableRowSkeleton amount={usersList.items ? usersList.items.length : 10} />
+                    }
                 </tbody>
             </table>
         </div>

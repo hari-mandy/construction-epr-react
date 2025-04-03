@@ -498,6 +498,9 @@ header {
 .mobile-search {
     display: none;
 }
+.full-width-search-bar .error-mes{
+    display: none;
+}
 @media only screen and (max-width: 1024px) {
     .side-menu-bar .hamburg-sidemenu .sidemenu-close-icon {
         display: block;
