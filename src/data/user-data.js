@@ -2,12 +2,27 @@ const userDetail = localStorage.getItem('userDetail');
 export const userData = userDetail ? JSON.parse(userDetail) : '';
 
 if (userData && userData.dateofbirth) {
-    // Convert to local YYYY-MM-DD format
     const date = new Date(userData.dateofbirth);
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone; //to get the user Time Zone
 
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Month is 0-based
-    const day = String(date.getDate()).padStart(2, "0");
+    function formatDateInTimeZone(date, timeZone) {
+    return new Intl.DateTimeFormat('en-GB', {
+        timeZone: timeZone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    }).format(date);
+    }
 
-    userData.dateofbirth = `${year}-${month}-${day}`;
+    // Example: Display the date in different time zones in yyyy/mm/dd format
+    const modifiedDate = formatDateInTimeZone(date, timeZone);
+
+    function convertToDesiredFormat(dateStr) {
+    const [day, month, year] = dateStr.split('/');
+    return `${year}-${month}-${day}`;
+    }
+
+    const formattedDate = convertToDesiredFormat(modifiedDate);
+
+    userData.dateofbirth = formattedDate;
 }
