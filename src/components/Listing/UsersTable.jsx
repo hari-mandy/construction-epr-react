@@ -6,7 +6,7 @@ import TableRowSkeleton from '../skeleton/TableRowSkeleton'
 const UsersTable = () => {
     const { usersList, setUsersList } = useContext(filterUsersContext);
     const [checkedRows, setCheckedRows] = useState([]);
-    const [headChecked, setHeadChecked] = useState(false);  
+    const [headChecked, setHeadChecked] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {

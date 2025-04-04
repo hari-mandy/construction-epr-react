@@ -19,9 +19,15 @@ const MattersContainer = () => {
             const makeList = await fetchUserData(`users?city=${filterUrl.city}&search=${filterUrl.search}`,'')
             setUsersList(makeList);
         }
+        async function alterUser() {
+            const alterList = await fetchUserData(`users?city=${filterUrl.city}&search=${filterUrl.search}&page=1`,'')
+            setUsersList(alterList);
+        }
+        fetchUserList();
         fetchUserList();
         handleNextNav();
         handlePrevNav();
+        alterUser();
     },[filterUrl])
 
     const handleNextNav = async () => {
