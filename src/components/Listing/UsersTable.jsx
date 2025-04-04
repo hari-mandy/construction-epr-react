@@ -1,19 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {filterUsersContext} from '../../context/filterUsersContext'
 import fetchUserData from '../../hooks/fetchUserData'
+import fetchDeleteData from '../../hooks/fetchDeleteData'
+import deleteIcon from '../../images/trash-can.png'
 import TableRowSkeleton from '../skeleton/TableRowSkeleton'
+import { filterUrlContext } from '../../context/filterUrlContext'
 
 const UsersTable = () => {
     const { usersList, setUsersList } = useContext(filterUsersContext);
+    const { filterUrl, setFilterUrl } = useContext(filterUrlContext);
     const [checkedRows, setCheckedRows] = useState([]);
     const [headChecked, setHeadChecked] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
 
+    const fetchUsers = async () => {
+        const makeList = await fetchUserData(`users?city=${filterUrl.city}&search=${filterUrl.search}`,'')
+        setUsersList(makeList);
+    };
+
     useEffect(() => {
-        const fetchUsers = async () => {
-            const users = await fetchUserData('users','');
-            setUsersList(users);
-        };
         fetchUsers();
     }, []);
 
@@ -48,6 +53,16 @@ const UsersTable = () => {
         setHeadChecked(newCheckedState);
         setCheckedRows(usersList.items.map(() => newCheckedState));
     }
+
+    const handleDelete = async (id) => {
+        const userRemoved = await fetchDeleteData('removeuser?id=',id);
+        if(userRemoved === 'success') {
+            const makeList = await fetchUserData(`users?city=${filterUrl.city}&search=${filterUrl.search}&page=${usersList.currentPage}`,'')
+            setUsersList(makeList);
+            return;
+        }
+        alert('Unable to delete User');
+    }
     
     return (
         <div className="table-container">
@@ -61,6 +76,7 @@ const UsersTable = () => {
                         <th className="sort-icon">Postal Code</th>
                         <th>City</th>
                         <th>Country</th>
+                        <th className='text-center'>actions</th>
                     </tr>
                     {
                         isLoaded ? 
@@ -74,6 +90,9 @@ const UsersTable = () => {
                                         <td>{user.postal_code}</td>
                                         <td>{user.city}</td>
                                         <td>{user.country}</td>
+                                        <td className="action-icons text-center">
+                                            <button className="delete-icon-container" onClick={() => handleDelete(user.id)}><img src={deleteIcon} alt="" /></button>
+                                        </td>
                                     </tr>
                                 ))
                             ) : (

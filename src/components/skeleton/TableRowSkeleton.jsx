@@ -16,6 +16,7 @@ const TableRowSkeleton = ({ amount }) => { // Defaults to 5 rows if not provided
                     <td role="cell"><Skeleton width={100} /></td>
                     <td role="cell"><Skeleton width={100} /></td>
                     <td role="cell"><Skeleton width={100} /></td>
+                    <td role="cell" className='text-center'><Skeleton width={100} /></td>
                 </tr>
             ))}
         </>
