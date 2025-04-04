@@ -1434,5 +1434,6 @@ table tr:has(input[type="checkbox"]:checked) {
     }
     .pagination-footer {
         gap: var(--space-small);
+        flex-wrap: wrap;
     }
 }

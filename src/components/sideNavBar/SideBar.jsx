@@ -9,8 +9,13 @@ import { MenuTogglecontext } from '../../context/menuToggleContext'
 const SideBar = () => {
     const sideMenuArray = Object.entries(sideMenus);
     const [isExpanded, setIsExpanded] = useState(true);
+    const [isMounted, setIsMounted] = useState(false);
 
     const { toggleValue, setToggleValue } = useContext(MenuTogglecontext);
+
+    useEffect(() => {
+        setIsMounted(true);
+      }, []);
 
     useEffect(() => {
         if(!isExpanded) {
@@ -38,7 +43,7 @@ const SideBar = () => {
     }, [isExpanded]);
 
 	return (
-        <section className={`side-menu-bar ${isExpanded ? "collapse-side-menu" : ""}`}>
+        <section className={`side-menu-bar ${isMounted && isExpanded ? "collapse-side-menu" : ""}`} >
             <ul className='side-menu-list-depth-1'>
                 <li className="site-logo">
                     <a href="/"><img src={sitelogo} alt="site Logo"></img></a>
