@@ -7,7 +7,7 @@ const UserMenu = () => {
 
     const navigate = useNavigate();
     useEffect(() => {
-        const getUser = JSON.parse(localStorage.getItem("userDetail"));
+        const getUser = JSON.parse(localStorage.getItem("userDetail")) || JSON.parse(sessionStorage.getItem("userDetail")) ;
         if(!!getUser) {
             setUserDetail(getUser);
             return ;
@@ -17,6 +17,7 @@ const UserMenu = () => {
 
     const clearLocalStorage = () => {
         localStorage.clear();
+        sessionStorage.clear();
         navigate("/login");
     }
 

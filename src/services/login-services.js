@@ -23,7 +23,7 @@ const validateUser = async (event, UserData, userPassword, rememberMe, errorMess
         if (errorMessageEmail ) {
             return 'Check the above Fields';
         }
-        storeUserLocal(UserData);
+        storeUserSession(UserData);
         return 'success';
     } catch (error) {
         alert("Error validating password:", error);
@@ -46,15 +46,19 @@ const storeUserLocal = (data) => {
     localStorage.setItem('userDetail', JSON.stringify(data));
 }
 
+const storeUserSession = (data) => {
+    sessionStorage.setItem('userDetail', JSON.stringify(data));
+}
+
 const checkLocalUser = () => {
-    const user = localStorage.getItem('userDetail');
+    const user = localStorage.getItem('userDetail') || sessionStorage.getItem('userDetail');
     if(user) {
         return user;
     }
     return ;
 }
 
-const handleUnique= async (type, value) => {
+const handleUnique= async (type, value) => { //function to check unique value in the db.
     if(type === 'name') {
         return ;
     }
@@ -68,6 +72,5 @@ const handleUnique= async (type, value) => {
         alert('Error checking value');
     }
 }
-
 
 export  { handleEmail, validateUser, checkLocalUser, handleUnique };
