@@ -1,4 +1,4 @@
-const userDetail = localStorage.getItem('userDetail');
+const userDetail = localStorage.getItem('userDetail') || sessionStorage.getItem('userDetail');
 export const userData = userDetail ? JSON.parse(userDetail) : '';
 
 if (userData && userData.dateofbirth) {
