@@ -8,6 +8,10 @@ import ForgetPassword from "./pages/Forgetpassword";
 import ResetPassword from "./pages/ResetPassword";
 import InvalidToken from "./pages/InvalidToken";
 import Matters from "./pages/Matters";
+import React from "react";
+import { filterUsersContext } from "./context/filterUsersContext";
+import { filterUrlContext } from "./context/filterUrlContext";
+import { MenuTogglecontext, NotificationToggleContext } from "./context/menuToggleContext";
 
 function App() {
 
@@ -15,20 +19,37 @@ function App() {
         document.title = "Dummie ERP";
     }, []);
 
+    const [usersList, setUsersList] = useState({});
+    const [filterUrl, setFilterUrl] = useState({
+        search : '',
+        city : ''
+    });
+    const [toggleValue, setToggleValue] = useState(false);
+    const [notificationToggle, setNotificationToggle] = useState(false);
+    
+
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/profile" element={<PartyMaster />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/invalid-token" element={<InvalidToken />} />
-                <Route path="/matters" element={<Matters />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/forget-password" element={<ForgetPassword />} />
-                <Route path="/reset-password" element={<ResetPassword />} />
-            </Routes>
-        </Router>
+        <filterUsersContext.Provider value={{ usersList, setUsersList }} >
+            <filterUrlContext.Provider value={{ filterUrl, setFilterUrl }} >
+                <MenuTogglecontext.Provider value={{ toggleValue, setToggleValue }}>
+                    <NotificationToggleContext.Provider value={{ notificationToggle, setNotificationToggle }}>
+                        <Router>
+                            <Routes>
+                                <Route path="/" element={<Dashboard />} />
+                                <Route path="/profile" element={<PartyMaster />} />
+                                <Route path="/dashboard" element={<Dashboard />} />
+                                <Route path="/invalid-token" element={<InvalidToken />} />
+                                <Route path="/matters" element={<Matters />} />
+                                <Route path="/login" element={<Login />} />
+                                <Route path="/register" element={<Register />} />
+                                <Route path="/forget-password" element={<ForgetPassword />} />
+                                <Route path="/reset-password" element={<ResetPassword />} />
+                            </Routes>
+                        </Router>
+                    </NotificationToggleContext.Provider>
+                </MenuTogglecontext.Provider>
+            </filterUrlContext.Provider>
+        </filterUsersContext.Provider>
     );
 }
 

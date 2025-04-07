@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-// import RegistrationForm from './RegistrationForm';
 import ProfileForm from '../components/forms/ProfileForm'
 
 const ProfileContent = () => {
@@ -32,7 +31,6 @@ const ProfileContent = () => {
         }
     }
 
-    
     return (
         <Tabs>
             <div className="main-content-header">

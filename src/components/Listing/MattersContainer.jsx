@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import UsersTable from '../Listing/UsersTable'
 import MattersFilterBar from './MattersFilterBar'
 import { filterUsersContext } from '../../context/filterUsersContext'
@@ -8,11 +8,9 @@ import PageNav from '../pagination/PageNav'
 import { nextNavigation, prevNavigation } from '../../services/pagination-services'
 
 const MattersContainer = () => {
-    const [usersList, setUsersList] = useState({});
-    const [filterUrl, setFilterUrl] = useState({
-        search : '',
-        city : ''
-    });
+    const { usersList, setUsersList } = useContext(filterUsersContext);
+    const { filterUrl, setFilterUrl } = useContext(filterUrlContext);
+
 
     useEffect(() => {
         async function fetchUserList() {
@@ -43,15 +41,11 @@ const MattersContainer = () => {
     }
 
     return (
-        <filterUsersContext.Provider value={{ usersList, setUsersList }} >
-            <filterUrlContext.Provider value={{ filterUrl, setFilterUrl }} >
-                <div className='content-wrapper'>
-                    <MattersFilterBar />
-                    <UsersTable />
-                    <PageNav totalNumberOfPosts={usersList.totalItems} rowsPerPage={usersList.items ? usersList.items.length : ''} offsetPosts={usersList.offset} currentPagenumber={usersList.currentPage} totalPages={usersList.totalPages} onClickNext={handleNextNav} onClickPrev={handlePrevNav}/>
-                </div>
-            </filterUrlContext.Provider>
-        </filterUsersContext.Provider>
+        <div className='content-wrapper'>
+            <MattersFilterBar />
+            <UsersTable />
+            <PageNav totalNumberOfPosts={usersList.totalItems} rowsPerPage={usersList.items ? usersList.items.length : ''} offsetPosts={usersList.offset} currentPagenumber={usersList.currentPage} totalPages={usersList.totalPages} onClickNext={handleNextNav} onClickPrev={handlePrevNav}/>
+        </div>
     )
 }
 

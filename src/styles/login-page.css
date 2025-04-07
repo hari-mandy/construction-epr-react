@@ -180,6 +180,8 @@ body {
     cursor: pointer;
     border-radius: 8px;
     width: 100%;
+    max-width: 380px;
+    max-height: 56px;
     background-color: var(--button-bg);
     padding: 17px 0;
     color: var(--primary-color);
