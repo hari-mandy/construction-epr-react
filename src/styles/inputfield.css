@@ -161,12 +161,24 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 }
 
 /* style for registration form alignment and spacing */
-.registration-form-container {
-    display: flex;
+.registration-form-container-wrapper {
     background-color: var(--primary-color);
     padding: var(--space-medium);
     gap: var(--space-medium);
     max-width: 960px;
+    border-radius: 20px;
+}
+.text-center {
+    text-align: center;
+}
+.success-mes {
+    color: var(--success-mes);
+}
+.registration-form-container {
+    display: flex;
+    padding: var(--space-medium);
+    gap: var(--space-medium);
+    max-width: 695px;
     border-radius: 20px;
 }
 .registration-form-container label {
