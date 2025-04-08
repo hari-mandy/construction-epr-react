@@ -26,6 +26,7 @@ const ProfileForm = () => {
         email: '',
         username: '',
         profile_img:'',
+        postal_code: '',
     })
     const oldValue = useRef('');
     const [successmes, setSuccessMes] = useState('');
@@ -74,9 +75,15 @@ const ProfileForm = () => {
     const handleSubmit= async (e) => {
         e.preventDefault();
         if(errMessage.name === '' && errMessage.email === '' && errMessage.username === '') {
+            if (!/^[1-9][0-9]{2}\s?[0-9]{3}$/.test(userDetail.postal_code)) {
+                setErrMessage(prevState => ({...prevState, postal_code: '*Enter a valid pincode*' }));
+                return;
+            }
+            setErrMessage(prevState => ({...prevState, postal_code: '' }));
             const result = await fetchPostData('updateuser', userDetail);
             if(result !== 'success') {
                 alert('Details Not updated !')
+                return ;
             }
             const profile = {...JSON.parse(localStorage.getItem('userDetail')), ...userDetail };
             localStorage.setItem('userDetail', JSON.stringify(profile));
@@ -100,7 +107,7 @@ const ProfileForm = () => {
                             <InputText labelTitle="Email" containerStyle="email-field" inputType="email" name="email" value={userDetail.email} onChange={(e) => handleChange(e, 'email')} handleFocus={handleFocus} onBlurFun={(e) => handleBlur('email', e)} errorMessage={errMessage.email} errorMessageAbove="true"/>
                             <InputText labelTitle="Date Of Birth" containerStyle="date-field" inputType="date" name="dateofbirth" value={userDetail.dateofbirth ? userDetail.dateofbirth : ''} onChange={(e) => handleChange(e, 'dateofbirth')}  errorMessageAbove="true" />
                             <InputText labelTitle="Permanent Address" containerStyle="name-field" inputType="text" name="permanent_address" value={userDetail.permanent_address ? userDetail.permanent_address : ''} onChange={(e) => handleChange(e, 'permanent_address')} errorMessageAbove="true" />
-                            <InputText labelTitle="Postal Code" containerStyle="name-field" inputType="text" name="postal_code" value={userDetail.postal_code ? userDetail.postal_code : ''} postal_code onChange={(e) => handleChange(e, 'postal_code')} errorMessageAbove="true" />
+                            <InputText labelTitle="Postal Code" containerStyle="name-field" inputType="text" name="postal_code" value={userDetail.postal_code ? userDetail.postal_code : ''} postal_code onChange={(e) => handleChange(e, 'postal_code')} errorMessage={errMessage.postal_code} errorMessageAbove="true" />
                         </div>
                         <div className="form-column">
                             <InputText labelTitle="User Name" containerStyle="name-field" inputType="text" name="username" value={userDetail.username} onChange={(e) => handleChange(e, 'username')} onBlurFun={(e)=> handleBlur('username',e)} handleFocus={handleFocus} errorMessage={errMessage.username} errorMessageAbove="true"/>

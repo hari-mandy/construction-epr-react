@@ -140,7 +140,7 @@ h6 {
 }
 .main-content {
     margin-left: 320px;
-    height: auto;
+    min-height: 100vh;
     background-color: var(--white-smoke);
     padding: var(--space-large);
     transition: 0.5s all ease-in-out;
