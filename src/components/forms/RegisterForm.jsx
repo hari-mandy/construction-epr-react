@@ -67,7 +67,6 @@ const RegisterForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(formData)
         if(formData.name === '') { setErrorMessage(prevState => ({...prevState, name: reqiredMes })); return '' }
         if(formData.username === '') { setErrorMessage(prevState => ({...prevState, username: reqiredMes })); return '' }
         if(formData.email === '') { setErrorMessage(prevState => ({...prevState, email: reqiredMes })); return '' }
@@ -77,7 +76,8 @@ const RegisterForm = () => {
             const updatedFormData = { ...formData, password: hashedPassword };
             const result = await fetchPostData('register' , updatedFormData);
             if (result === 'success') {
-                localStorage.setItem('userDetail', JSON.stringify(formData));
+                const userdata = await fetchUserData('get-user?email=', formData.email);
+                localStorage.setItem('userDetail', JSON.stringify(userdata[0]));
                 navigate("/dashboard");
                 return ;
             }
