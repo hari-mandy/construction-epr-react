@@ -66,6 +66,19 @@
     --space-xxxlarge:clamp(5.5rem, 3.122vw + 4.768rem, 7.5rem);
 }
 
+[data-theme="dark"] {
+    --primary-color: #1D232A;
+	--secondary-color: #ffffff;
+    --product-head-color : #ffffff;
+    --river-bed: #ffffff;
+    --button-hover: #ffffff;
+    --submenu-bg: #1D232A;
+    --use-name-color: #ffffff;
+    --table-pagination: #ffffff;
+    --table-heading-bg: #A9A9A9;
+    --table-search-placeholder: #A9A9A9;
+}
+
 body {
     font-family: "Poppins", serif;
     font-weight: var(--fw-regular);
@@ -103,6 +116,7 @@ h2 {
     font-weight: var(--fw-semibold);
     font-size: var(--heading-h2);
     line-height: calc(44/25);
+    color: var(--secondary-color);
 }
 h3 {
     font-weight: var(--fw-semibold);
@@ -501,9 +515,26 @@ header {
 .full-width-search-bar .error-mes{
     display: none;
 }
+.toggle-button {
+    background-color: transparent;
+    border: none;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.toggle-button img{
+    height: 36px;
+    width: 36px;
+}
+.dark-icon {
+    filter: brightness(0) saturate(100%) invert(96%) sepia(0%) saturate(15%) hue-rotate(315deg) brightness(105%) contrast(103%);
+}
 @media only screen and (max-width: 1024px) {
     .side-menu-bar .hamburg-sidemenu .sidemenu-close-icon {
         display: block;
+    }
+    .toggle-button img{
+        height: 24px;
+        width: 24px;
     }
     .side-menu-bar .sidemenu-open-icon {
         display: none;
@@ -1114,6 +1145,7 @@ ul.side-menu-list-depth-2 {
 }
 .table-filter-bar-wrapper h4 {
     text-transform: uppercase;
+    color: var(--use-name-color);
 }
 .table-filters {
     display: flex;
@@ -1139,6 +1171,8 @@ ul.side-menu-list-depth-2 {
 .table-search-field {
     height: 24px;
     border: none;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     padding-left: var(--space-small);
     font-family: var(--font-family);
     font-weight: var(--fw-medium);

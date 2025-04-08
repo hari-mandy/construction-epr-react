@@ -169,6 +169,9 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     max-width: 960px;
     border-radius: 20px;
 }
+.registration-form-container label {
+    color: var(--secondary-color);
+}
 .registration-form-container .form-column:first-child {
     flex-basis: 113px;
 }
