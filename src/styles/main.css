@@ -71,12 +71,12 @@
 	--secondary-color: #ffffff;
     --product-head-color : #ffffff;
     --river-bed: #ffffff;
-    --button-hover: #ffffff;
     --submenu-bg: #1D232A;
     --use-name-color: #ffffff;
     --table-pagination: #ffffff;
     --table-heading-bg: #A9A9A9;
     --table-search-placeholder: #A9A9A9;
+    --white-smoke: #a3a3a3;
 }
 
 body {
@@ -140,6 +140,7 @@ h6 {
 }
 .main-content {
     margin-left: 320px;
+    height: auto;
     background-color: var(--white-smoke);
     padding: var(--space-large);
     transition: 0.5s all ease-in-out;

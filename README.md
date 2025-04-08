@@ -12,6 +12,8 @@ A Dashboard for the ERP software is developed using React JS for Style css is us
 -   Pagination added for the list shown.
 -   Submenu support in sidebar.
 -   Swiper was developed using swiper js.
+-   For the loading time skeleton animation was used.
+-   Dark & Light themes were implemented.
 
 ## Core Libraries Used
 
@@ -22,6 +24,7 @@ A Dashboard for the ERP software is developed using React JS for Style css is us
 -   bcryptjs
 -   react-tabs
 -   swiper
+-   react-loading-skeleton
 
 ## Installation
 

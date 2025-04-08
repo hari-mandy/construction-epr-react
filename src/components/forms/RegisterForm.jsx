@@ -47,6 +47,7 @@ const RegisterForm = () => {
                 return ;
             }
             setErrorMessage(prevState => ({...prevState, [type]: "*Is already in use*" }));
+            setErrorMessage(prevState => ({...prevState, [type]: "" }));
 
         } catch (error) {
             alert('Error checking value');
@@ -66,6 +67,7 @@ const RegisterForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log(formData)
         if(formData.name === '') { setErrorMessage(prevState => ({...prevState, name: reqiredMes })); return '' }
         if(formData.username === '') { setErrorMessage(prevState => ({...prevState, username: reqiredMes })); return '' }
         if(formData.email === '') { setErrorMessage(prevState => ({...prevState, email: reqiredMes })); return '' }
@@ -75,7 +77,8 @@ const RegisterForm = () => {
             const updatedFormData = { ...formData, password: hashedPassword };
             const result = await fetchPostData('register' , updatedFormData);
             if (result === 'success') {
-                navigate("/login");
+                localStorage.setItem('userDetail', JSON.stringify(formData));
+                navigate("/dashboard");
                 return ;
             }
             alert("Your Registration Failed !")
