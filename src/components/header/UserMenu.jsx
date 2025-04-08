@@ -18,6 +18,7 @@ const UserMenu = () => {
     const clearLocalStorage = () => {
         localStorage.clear();
         sessionStorage.clear();
+        document.documentElement.setAttribute("data-theme", 'light');
         navigate("/login");
     }
 
