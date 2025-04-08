@@ -55,6 +55,10 @@ const UsersTable = () => {
     }
 
     const handleDelete = async (id) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+        if (!confirmDelete) {
+            return; // Exit if user cancels
+        }
         const userRemoved = await fetchDeleteData('removeuser?id=',id);
         if(userRemoved === 'success') {
             const makeList = await fetchUserData(`users?city=${filterUrl.city}&search=${filterUrl.search}&page=${usersList.currentPage}`,'')
