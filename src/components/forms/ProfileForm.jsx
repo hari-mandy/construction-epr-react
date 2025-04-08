@@ -98,15 +98,15 @@ const ProfileForm = () => {
                         <div className="form-column">
                             <InputText labelTitle="First Name" containerStyle="name-field" inputType="text" name="name" value={userDetail.name} onChange={(e) => handleChange(e, 'name')} errorMessage={errMessage.name} onBlurFun={(e) => handleBlur('name', e)} errorMessageAbove="true"/>
                             <InputText labelTitle="Email" containerStyle="email-field" inputType="email" name="email" value={userDetail.email} onChange={(e) => handleChange(e, 'email')} handleFocus={handleFocus} onBlurFun={(e) => handleBlur('email', e)} errorMessage={errMessage.email} errorMessageAbove="true"/>
-                            <InputText labelTitle="Date Of Birth" containerStyle="date-field" inputType="date" name="dateofbirth" value={userDetail.dateofbirth} onChange={(e) => handleChange(e, 'dateofbirth')}  errorMessageAbove="true" />
-                            <InputText labelTitle="Permanent Address" containerStyle="name-field" inputType="text" name="permanent_address" value={userDetail.permanent_address} onChange={(e) => handleChange(e, 'permanent_address')} errorMessageAbove="true" />
-                            <InputText labelTitle="Postal Code" containerStyle="name-field" inputType="text" name="postal_code" value={userDetail.postal_code} postal_code onChange={(e) => handleChange(e, 'postal_code')} errorMessageAbove="true" />
+                            <InputText labelTitle="Date Of Birth" containerStyle="date-field" inputType="date" name="dateofbirth" value={userDetail.dateofbirth ? userDetail.dateofbirth : ''} onChange={(e) => handleChange(e, 'dateofbirth')}  errorMessageAbove="true" />
+                            <InputText labelTitle="Permanent Address" containerStyle="name-field" inputType="text" name="permanent_address" value={userDetail.permanent_address ? userDetail.permanent_address : ''} onChange={(e) => handleChange(e, 'permanent_address')} errorMessageAbove="true" />
+                            <InputText labelTitle="Postal Code" containerStyle="name-field" inputType="text" name="postal_code" value={userDetail.postal_code ? userDetail.postal_code : ''} postal_code onChange={(e) => handleChange(e, 'postal_code')} errorMessageAbove="true" />
                         </div>
                         <div className="form-column">
                             <InputText labelTitle="User Name" containerStyle="name-field" inputType="text" name="username" value={userDetail.username} onChange={(e) => handleChange(e, 'username')} onBlurFun={(e)=> handleBlur('username',e)} handleFocus={handleFocus} errorMessage={errMessage.username} errorMessageAbove="true"/>
-                            <InputText labelTitle="Present Address" containerStyle="name-field" inputType="text" name="present_address" value={userDetail.present_address} onChange={(e) => handleChange(e, 'present_address')} errorMessageAbove="true" />
-                            <InputText labelTitle="City" containerStyle="name-field" inputType="text" name="city" value={userDetail.city} onChange={(e) => handleChange(e, 'city')} errorMessageAbove="true" />
-                            <InputText labelTitle="Country" containerStyle="name-field" inputType="text" name="country" value={userDetail.country} onChange={(e) => handleChange(e, 'country')} errorMessageAbove="true"/>
+                            <InputText labelTitle="Present Address" containerStyle="name-field" inputType="text" name="present_address" value={userDetail.present_address ? userDetail.present_address : ''} onChange={(e) => handleChange(e, 'present_address')} errorMessageAbove="true" />
+                            <InputText labelTitle="City" containerStyle="name-field" inputType="text" name="city" value={userDetail.city ? userDetail.city : ''} onChange={(e) => handleChange(e, 'city')} errorMessageAbove="true" />
+                            <InputText labelTitle="Country" containerStyle="name-field" inputType="text" name="country" value={userDetail.country ? userDetail.country : ''} onChange={(e) => handleChange(e, 'country')} errorMessageAbove="true"/>
                         </div>
                     </div>
                     <InputText inputType="submit" value="save" inputStyle="primary-btn" containerStyle="submit-btn-container" />
